@@ -5,9 +5,18 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 
+#include "LuaScript.h"
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	LuaScript::initialise();
+
+	int width = 1024;
+	int height = 600;
+	char title[256];
+	strcpy_s(title, "The Make It game engine!");
+
+	sf::RenderWindow window(sf::VideoMode(width, height), title);
 	window.setFramerateLimit(60);
 	ImGui::SFML::Init(window);
 
@@ -35,6 +44,8 @@ int main()
 		ImGui::SFML::Render(window);
 		window.display();
 	}
+
+	LuaScript::shutdown();
 
 	ImGui::SFML::Shutdown();
 

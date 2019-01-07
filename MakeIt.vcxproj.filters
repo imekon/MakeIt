@@ -16,6 +16,12 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{eee01c34-c6c5-43ed-b1ca-df7c44b22856}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{74348574-78ee-4dad-8e6f-ff403c31a93e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="box2d">
+      <UniqueIdentifier>{2685a46a-4b5e-40a2-9198-ac18692ddea4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -36,6 +42,108 @@
     <ClCompile Include="imgui\imgui-SFML.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="LUA\lapi.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lauxlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lbaselib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lbitlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lcode.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lcorolib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lctype.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ldblib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ldebug.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ldo.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ldump.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lfunc.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lgc.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\linit.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\liolib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\llex.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lmathlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lmem.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\loadlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lobject.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lopcodes.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\loslib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lparser.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lstate.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lstring.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lstrlib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ltable.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ltablib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\ltm.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lundump.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lutf8lib.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lvm.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LUA\lzio.c">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaScript.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -49,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="imgui\imgui-SFML.h">
       <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaScript.h">
+      <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
