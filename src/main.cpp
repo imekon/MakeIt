@@ -20,6 +20,9 @@ int main()
 	window.setFramerateLimit(60);
 	ImGui::SFML::Init(window);
 
+	char buffer[256];
+	buffer[0] = 0;
+
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
 	{
@@ -36,9 +39,15 @@ int main()
 
 		ImGui::SFML::Update(window, deltaClock.restart());
 
-		ImGui::Begin("Hello, world!");
-		ImGui::Button("Look at this pretty button");
+		ImGui::Begin("Console");
+		ImGui::BeginChild("console text", ImVec2(0, 200));
+		ImGui::Text("MakeIt Game Engine\n\nCopyright (c) 2018 Pete Goodwin\n");
+		ImGui::EndChild();
+		ImGui::Spacing();
+		ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer));
 		ImGui::End();
+
+		ImGui::ShowDemoWindow();
 
 		window.clear();
 		ImGui::SFML::Render(window);

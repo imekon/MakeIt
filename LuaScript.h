@@ -15,4 +15,6 @@ public:
 
 private:
 	static lua_State *state;
+
+	static int versions(lua_State *state);
 };

@@ -13,3 +13,8 @@ void LuaScript::shutdown()
 {
 	lua_close(state);
 }
+
+int LuaScript::versions(lua_State *state)
+{
+	return 0;
+}
