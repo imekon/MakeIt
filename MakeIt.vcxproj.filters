@@ -303,6 +303,9 @@
     <ClCompile Include="box2d\Rope\b2Rope.cpp">
       <Filter>box2d\rope</Filter>
     </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -460,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="box2d\Rope\b2Rope.h">
       <Filter>box2d\rope</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

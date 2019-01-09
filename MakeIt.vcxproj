@@ -65,6 +65,7 @@
     <ClCompile Include="box2d\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="box2d\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="box2d\Rope\b2Rope.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="imgui\imgui-SFML.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="box2d\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="box2d\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="box2d\Rope\b2Rope.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui-SFML.h" />
     <ClInclude Include="imgui\imgui.h" />

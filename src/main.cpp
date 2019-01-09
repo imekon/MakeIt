@@ -5,7 +5,20 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 
+#include "Console.h"
 #include "LuaScript.h"
+
+static char console_buffer[4096];
+
+void console_print(const char *text)
+{
+	strcat_s(console_buffer, text);
+}
+
+void console_clear()
+{
+	console_buffer[0] = 0;
+}
 
 int main()
 {
@@ -22,6 +35,8 @@ int main()
 
 	char buffer[256];
 	buffer[0] = 0;
+
+	strcat_s(console_buffer, "MakeIt Game Engine\n\nCopyright (c) 2018 Pete Goodwin\n");
 
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
@@ -41,7 +56,7 @@ int main()
 
 		ImGui::Begin("Console");
 		ImGui::BeginChild("console text", ImVec2(0, 200));
-		ImGui::Text("MakeIt Game Engine\n\nCopyright (c) 2018 Pete Goodwin\n");
+		ImGui::Text(console_buffer);
 		ImGui::EndChild();
 		ImGui::Spacing();
 		ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer));
