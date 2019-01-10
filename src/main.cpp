@@ -8,11 +8,9 @@
 #include "Console.h"
 #include "LuaScript.h"
 
-static Console *console;
-
 int main()
 {
-	console = new Console();
+	auto console = Console::getInstance();
 
 	LuaScript::initialise();
 
@@ -28,7 +26,7 @@ int main()
 	char buffer[256];
 	buffer[0] = 0;
 
-	console->print("MakeIt Game Engine\n\nCopyright (c) 2018 Pete Goodwin\n");
+	console->print("MakeIt Game Engine\n\nCopyright (c) 2019 Pete Goodwin\n\n");
 
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
@@ -51,10 +49,17 @@ int main()
 		for (auto & content : console->getContent())
 		{
 			ImGui::TextColored(content.colour, content.text.c_str());
+			if (!content.newLine)
+				ImGui::SameLine();
 		}
+
 		ImGui::EndChild();
 		ImGui::Spacing();
-		ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer));
+		if (ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer)))
+		{
+
+		}
+
 		ImGui::End();
 
 		ImGui::ShowDemoWindow();

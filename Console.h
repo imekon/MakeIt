@@ -5,6 +5,11 @@
 
 #include <imgui.h>
 
+extern "C"
+{
+	#include "lua.h"
+}
+
 #include "Priority.h"
 
 struct ConsoleContent
@@ -22,9 +27,22 @@ public:
 
 	const std::vector<ConsoleContent> & getContent() const { return content; }
 
+	static Console *getInstance()
+	{
+		if (console == nullptr)
+			console = new Console();
+
+		return console;
+	}
+
+	static void register_functions(lua_State *state);
+	static int print_feature(lua_State *state);
+
 private:
 	PRIORITY priority;
 	std::vector<ConsoleContent> content;
+
+	static Console *console;
 
 	ImVec4 getPriorityColour(PRIORITY priority);
 };
