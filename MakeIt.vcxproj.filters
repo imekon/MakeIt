@@ -467,5 +467,8 @@
     <ClInclude Include="Console.h">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="Priority.h">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
