@@ -12,7 +12,7 @@ int main()
 {
 	auto console = Console::getInstance();
 
-	LuaScript::initialise();
+	LuaScript::initialise(console);
 
 	int width = 1024;
 	int height = 600;
@@ -55,9 +55,10 @@ int main()
 
 		ImGui::EndChild();
 		ImGui::Spacing();
-		if (ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer)))
+		if (ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer), ImGuiInputTextFlags_EnterReturnsTrue))
 		{
-
+			LuaScript::process(buffer);
+			buffer[0] = 0;
 		}
 
 		ImGui::End();

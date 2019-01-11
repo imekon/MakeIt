@@ -5,10 +5,7 @@
 
 #include <imgui.h>
 
-extern "C"
-{
-	#include "lua.h"
-}
+#include <lua.hpp>
 
 #include "Priority.h"
 

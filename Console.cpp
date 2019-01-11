@@ -68,6 +68,7 @@ int Console::print_feature(lua_State * state)
 		auto text = lua_tostring(state, index);
 		
 		console->print(text);
+		console->print("\n");
 	}
 
 	return 0;
