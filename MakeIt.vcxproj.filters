@@ -312,6 +312,18 @@
     <ClCompile Include="src\TextureManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Node.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Node2D.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Node3D.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sprite.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -477,6 +489,18 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\TextureManager.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Node.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Node2D.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Node3D.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Sprite.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
