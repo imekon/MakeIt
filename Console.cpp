@@ -19,6 +19,9 @@ Console::Console() : priority(PRIORITY::LOW)
 
 void Console::print(const char *format, ...)
 {
+	if (format == nullptr)
+		return;
+
 	va_list args;
 	va_start(args, format);
 	char buffer[1024];

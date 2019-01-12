@@ -20,6 +20,8 @@ class Console
 {
 public:
 	Console();
+
+	void set_priority(PRIORITY prio) { priority = prio; }
 	void print(const char *format, ...);
 
 	const std::vector<ConsoleContent> & get_content() const { return content; }

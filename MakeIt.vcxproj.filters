@@ -43,6 +43,9 @@
     <Filter Include="box2d\rope">
       <UniqueIdentifier>{96979d65-b055-44e4-8fbe-d2f524d9f3af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{8961d2f6-19d9-4761-8645-1a965ca7dbe0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -470,5 +473,10 @@
     <ClInclude Include="Priority.h">
       <Filter>header</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game.lua">
+      <Filter>scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>

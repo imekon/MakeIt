@@ -163,6 +163,9 @@
     <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Priority.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="game.lua" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{EE52AB52-8B35-4AD5-8EF4-EB00553C09C7}</ProjectGuid>

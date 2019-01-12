@@ -34,14 +34,79 @@ void LuaScript::shutdown()
 	lua_close(state);
 }
 
-void LuaScript::process(const char *buffer)
+bool LuaScript::load_file(const char * filename)
+{
+	auto result = luaL_loadfile(state, filename);
+	if (result != LUA_OK)
+	{
+		print_error(state);
+		return false;
+	}
+
+	result = lua_pcall(state, 0, LUA_MULTRET, 0);
+	if (result != LUA_OK)
+	{
+		print_error(state);
+		return false;
+	}
+
+	return true;
+}
+
+bool LuaScript::process(const char *buffer)
 {
 	int error = luaL_loadbuffer(state, buffer, strlen(buffer), "process") || lua_pcall(state, 0, 0, 0);
 	if (error)
 	{
-		console->print(lua_tostring(state, -1));
+		print_error(state);
+		return false;
+	}
+
+	return true;
+}
+
+bool LuaScript::process_configuration(int &width, int &height, char *title, int length)
+{
+	lua_getglobal(state, "configuration");
+	lua_pushnil(state);
+	while (lua_next(state, -2))
+	{
+		auto key = lua_tostring(state, -2);
+		int number = 0;
+		const char *text = nullptr;
+
+		if (lua_isnumber(state, -1))
+		{
+			number = (int)lua_tonumber(state, -1);
+		}
+		else if (lua_isstring(state, -1))
+		{
+			text = lua_tostring(state, -1);
+		}
+
+		if (strcmp(key, "width") == 0)
+			width = number;
+
+		if (strcmp(key, "height") == 0)
+			height = number;
+
+		if (strcmp(key, "title") == 0)
+			strcpy_s(title, length, text);
+
 		lua_pop(state, 1);
 	}
+
+	lua_pop(state, 1);
+
+	return true;
+}
+
+void LuaScript::print_error(lua_State * state)
+{
+	console->set_priority(PRIORITY::HIGH);
+	console->print("%s\n", lua_tostring(state, -1));
+	console->set_priority(PRIORITY::MEDIUM);
+	lua_pop(state, 1);
 }
 
 int LuaScript::open_library(lua_State *state)
