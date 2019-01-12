@@ -65,13 +65,11 @@
     <ClCompile Include="box2d\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="box2d\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="box2d\Rope\b2Rope.cpp" />
-    <ClCompile Include="Console.cpp" />
     <ClCompile Include="imgui\imgui-SFML.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
-    <ClCompile Include="LuaScript.cpp" />
     <ClCompile Include="LUA\lapi.c" />
     <ClCompile Include="LUA\lauxlib.c" />
     <ClCompile Include="LUA\lbaselib.c" />
@@ -105,6 +103,8 @@
     <ClCompile Include="LUA\lutf8lib.c" />
     <ClCompile Include="LUA\lvm.c" />
     <ClCompile Include="LUA\lzio.c" />
+    <ClCompile Include="src\Console.cpp" />
+    <ClCompile Include="src\LuaScript.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,13 +155,13 @@
     <ClInclude Include="box2d\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="box2d\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="box2d\Rope\b2Rope.h" />
-    <ClInclude Include="Console.h" />
+    <ClInclude Include="headers\Console.h" />
+    <ClInclude Include="headers\LuaScript.h" />
+    <ClInclude Include="headers\Priority.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui-SFML.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_internal.h" />
-    <ClInclude Include="LuaScript.h" />
-    <ClInclude Include="Priority.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="game.lua" />
@@ -238,7 +238,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -255,7 +255,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -274,7 +274,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -295,7 +295,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

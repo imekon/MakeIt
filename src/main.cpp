@@ -13,14 +13,15 @@ int main()
 	auto console = Console::getInstance();
 
 	LuaScript::initialise(console);
-	LuaScript::load_file("game.lua");
+	auto loaded = LuaScript::load_file("scripts\\game.lua");
 
 	int width = 1024;
 	int height = 600;
 	char title[256];
 	strcpy_s(title, "The Make It game engine!");
 
-	LuaScript::process_configuration(width, height, title, 256);
+	if (loaded)
+		LuaScript::process_configuration(width, height, title, 256);
 
 	sf::RenderWindow window(sf::VideoMode(width, height), title);
 	window.setFramerateLimit(60);
