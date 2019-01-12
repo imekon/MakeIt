@@ -46,7 +46,7 @@ int main()
 
 		ImGui::Begin("Console");
 		ImGui::BeginChild("console text", ImVec2(0, 200));
-		for (auto & content : console->getContent())
+		for (auto & content : console->get_content())
 		{
 			ImGui::TextColored(content.colour, content.text.c_str());
 			if (!content.newLine)

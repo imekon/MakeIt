@@ -3,19 +3,30 @@
 #include "Console.h"
 #include "LuaScript.h"
 
+luaL_Reg LuaScript::library[] =
+{
+	"versions", LuaScript::versions,
+
+	nullptr, nullptr
+};
+
+luaL_Reg LuaScript::libraries[] =
+{
+	"System", LuaScript::open_library,
+	"Console", Console::open_library,
+
+	nullptr, nullptr
+};
+
 Console *LuaScript::console = nullptr;
 lua_State *LuaScript::state = nullptr;
 
 void LuaScript::initialise(Console *cons)
 {
 	console = cons;
-
 	state = luaL_newstate();
-
 	luaL_openlibs(state);
-
-	register_functions(state);
-	Console::register_functions(state);
+	open_libraries(state);
 }
 
 void LuaScript::shutdown()
@@ -33,9 +44,23 @@ void LuaScript::process(const char *buffer)
 	}
 }
 
-void LuaScript::register_functions(lua_State *state)
+int LuaScript::open_library(lua_State *state)
+{
+	luaL_newlib(state, library);
+	return 1;
+}
+
+void LuaScript::open_libraries(lua_State *state)
 {
 	lua_register(state, "versions", versions);
+
+	luaL_Reg *lib;
+
+	for (lib = libraries; lib->func; lib++)
+	{
+		luaL_requiref(state, lib->name, lib->func, 1);
+		lua_pop(state, 1);
+	}
 }
 
 int LuaScript::versions(lua_State *state)

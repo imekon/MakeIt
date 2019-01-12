@@ -22,7 +22,7 @@ public:
 	Console();
 	void print(const char *format, ...);
 
-	const std::vector<ConsoleContent> & getContent() const { return content; }
+	const std::vector<ConsoleContent> & get_content() const { return content; }
 
 	static Console *getInstance()
 	{
@@ -32,14 +32,15 @@ public:
 		return console;
 	}
 
-	static void register_functions(lua_State *state);
-	static int print_feature(lua_State *state);
+	static int open_library(lua_State *state);
 
 private:
 	PRIORITY priority;
 	std::vector<ConsoleContent> content;
 
 	static Console *console;
+	static luaL_Reg library[];
 
-	ImVec4 getPriorityColour(PRIORITY priority);
+	ImVec4 get_priority_colour(PRIORITY priority);
+	static int print_feature(lua_State *state);
 };

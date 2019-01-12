@@ -3,6 +3,13 @@
 
 #include "Console.h"
 
+luaL_Reg Console::library[] =
+{
+	"print", Console::print_feature,
+
+	nullptr, nullptr
+};
+
 Console *Console::console = nullptr;
 
 Console::Console() : priority(PRIORITY::LOW)
@@ -29,7 +36,7 @@ void Console::print(const char *format, ...)
 			chunk[index] = 0;
 
 			ConsoleContent cont;
-			cont.colour = getPriorityColour(priority);
+			cont.colour = get_priority_colour(priority);
 			cont.newLine = true;
 			cont.text = chunk;
 			content.push_back(cont);
@@ -43,7 +50,7 @@ void Console::print(const char *format, ...)
 		chunk[index] = 0;
 
 		ConsoleContent cont;
-		cont.colour = getPriorityColour(priority);
+		cont.colour = get_priority_colour(priority);
 		cont.newLine = false;
 		cont.text = chunk;
 		content.push_back(cont);
@@ -52,9 +59,13 @@ void Console::print(const char *format, ...)
 	va_end(args);
 }
 
-void Console::register_functions(lua_State * state)
+int Console::open_library(lua_State * state)
 {
+	// Replace standard print with our one
 	lua_register(state, "print", print_feature);
+
+	luaL_newlib(state, library);
+	return 1;
 }
 
 int Console::print_feature(lua_State * state)
@@ -74,7 +85,7 @@ int Console::print_feature(lua_State * state)
 	return 0;
 }
 
-ImVec4 Console::getPriorityColour(PRIORITY priority)
+ImVec4 Console::get_priority_colour(PRIORITY priority)
 {
 	switch (priority)
 	{

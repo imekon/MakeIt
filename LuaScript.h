@@ -16,6 +16,10 @@ private:
 	static Console *console;
 	static lua_State *state;
 
-	static void register_functions(lua_State *state);
+	static luaL_Reg library[];
+	static luaL_Reg libraries[];
+
+	static int open_library(lua_State *state);
+	static void open_libraries(lua_State *state);
 	static int versions(lua_State *state);
 };
