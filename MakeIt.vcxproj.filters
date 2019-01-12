@@ -309,6 +309,9 @@
     <ClCompile Include="src\LuaScript.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\TextureManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -471,6 +474,9 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\Priority.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\TextureManager.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
