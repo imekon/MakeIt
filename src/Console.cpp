@@ -104,3 +104,11 @@ ImVec4 Console::get_priority_colour(PRIORITY priority)
 
 	return ImVec4(0.5f, 0.5f, 0.5f, 1.0f);
 }
+
+void Console::shutdown()
+{
+	if (console)
+		delete console;
+
+	console = nullptr;
+}

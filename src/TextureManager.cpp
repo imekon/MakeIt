@@ -5,6 +5,13 @@ using namespace sf;
 
 TextureManager *TextureManager::instance = nullptr;
 
+luaL_Reg TextureManager::library[] =
+{
+	"load", TextureManager::load_texture_feature,
+
+	nullptr, nullptr
+};
+
 TextureManager::TextureManager()
 {
 }
@@ -45,4 +52,23 @@ void TextureManager::shutdown()
 		delete instance;
 
 	instance = nullptr;
+}
+
+int TextureManager::open_library(lua_State * state)
+{
+	luaL_newlib(state, library);
+	return 1;
+}
+
+int TextureManager::load_texture_feature(lua_State * state)
+{
+	auto num_args = lua_gettop(state);
+
+	for (int index = 1; index <= num_args; index++)
+	{
+		auto text = lua_tostring(state, index);
+		instance->load_texture(text);
+	}
+
+	return 0;
 }

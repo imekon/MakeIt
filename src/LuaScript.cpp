@@ -1,7 +1,10 @@
 #include <Box2d.h>
 
 #include "Console.h"
+#include "TextureManager.h"
 #include "LuaScript.h"
+
+const int NODE_STORE_MAGIC = 0x4c456761;
 
 luaL_Reg LuaScript::library[] =
 {
@@ -14,6 +17,7 @@ luaL_Reg LuaScript::libraries[] =
 {
 	"System", LuaScript::open_library,
 	"Console", Console::open_library,
+	"Texture", TextureManager::open_library,
 
 	nullptr, nullptr
 };
@@ -126,6 +130,14 @@ void LuaScript::open_libraries(lua_State *state)
 		luaL_requiref(state, lib->name, lib->func, 1);
 		lua_pop(state, 1);
 	}
+}
+
+void LuaScript::create_node_store(lua_State * state, MakeIt::Node * node)
+{
+	NodeStore *node_store = static_cast<NodeStore *>(lua_newuserdata(state, sizeof(NodeStore)));
+
+	node_store->magic = NODE_STORE_MAGIC;
+	node_store->node = node;
 }
 
 int LuaScript::versions(lua_State *state)

@@ -2,7 +2,15 @@
 
 #include <lua.hpp>
 
+#include "Node.h"
+
 class Console;
+
+struct NodeStore
+{
+	int magic;
+	MakeIt::Node *node;
+};
 
 class LuaScript
 {
@@ -24,5 +32,6 @@ private:
 	static void print_error(lua_State *state);
 	static int open_library(lua_State *state);
 	static void open_libraries(lua_State *state);
+	static void create_node_store(lua_State *state, MakeIt::Node *node);
 	static int versions(lua_State *state);
 };

@@ -34,6 +34,8 @@ public:
 		return console;
 	}
 
+	static void shutdown();
+
 	static int open_library(lua_State *state);
 
 private:

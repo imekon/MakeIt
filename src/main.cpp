@@ -80,7 +80,7 @@ int main()
 
 	ImGui::SFML::Shutdown();
 
-	delete console;
+	Console::shutdown();
 	TextureManager::shutdown();
 
 	return 0;
