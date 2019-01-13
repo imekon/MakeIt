@@ -12,7 +12,7 @@ luaL_Reg Console::library[] =
 
 Console *Console::console = nullptr;
 
-Console::Console() : priority(PRIORITY::LOW)
+Console::Console() : scroll_to_bottom(false), priority(PRIORITY::LOW)
 {
 
 }
@@ -58,6 +58,8 @@ void Console::print(const char *format, ...)
 		cont.text = chunk;
 		content.push_back(cont);
 	}
+
+	scroll_to_bottom = true;
 
 	va_end(args);
 }

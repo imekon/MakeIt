@@ -11,7 +11,7 @@ public:
 	TextureManager();
 	~TextureManager();
 
-	bool load_texture(const char *filename);
+	sf::Texture *load_texture(const char *filename);
 
 	static TextureManager *getInstance();
 	static void shutdown();

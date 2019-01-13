@@ -1,3 +1,4 @@
+#include "LuaScript.h"
 #include "TextureManager.h"
 
 using namespace std;
@@ -24,18 +25,17 @@ TextureManager::~TextureManager()
 	}
 }
 
-bool TextureManager::load_texture(const char * filename)
+Texture *TextureManager::load_texture(const char * filename)
 {
 	sf::Texture *texture = new sf::Texture();
 	if (!texture->loadFromFile(filename))
 	{
 		delete texture;
-		return false;
+		return nullptr;
 	}
 
 	textures.push_back(texture);
-
-	return true;
+	return texture;
 }
 
 TextureManager * TextureManager::getInstance()
@@ -67,7 +67,10 @@ int TextureManager::load_texture_feature(lua_State * state)
 	for (int index = 1; index <= num_args; index++)
 	{
 		auto text = lua_tostring(state, index);
-		instance->load_texture(text);
+		auto texture = instance->load_texture(text);
+		if (texture)
+			LuaScript::create_texture_store(state, texture);
+		return 1;
 	}
 
 	return 0;

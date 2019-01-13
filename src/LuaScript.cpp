@@ -132,12 +132,22 @@ void LuaScript::open_libraries(lua_State *state)
 	}
 }
 
+void LuaScript::create_texture_store(lua_State * state, sf::Texture * texture)
+{
+	NodeStore *node_store = static_cast<NodeStore *>(lua_newuserdata(state, sizeof(NodeStore)));
+
+	node_store->magic = NODE_STORE_MAGIC;
+	node_store->type = DATA::TEXTURE;
+	node_store->data = texture;
+}
+
 void LuaScript::create_node_store(lua_State * state, MakeIt::Node * node)
 {
 	NodeStore *node_store = static_cast<NodeStore *>(lua_newuserdata(state, sizeof(NodeStore)));
 
 	node_store->magic = NODE_STORE_MAGIC;
-	node_store->node = node;
+	node_store->type = DATA::NODE;
+	node_store->data = node;
 }
 
 int LuaScript::versions(lua_State *state)

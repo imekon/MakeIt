@@ -50,8 +50,10 @@ int main()
 
 		ImGui::SFML::Update(window, deltaClock.restart());
 
+		ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
 		ImGui::Begin("Console");
-		ImGui::BeginChild("console text", ImVec2(0, 200));
+		const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
+		ImGui::BeginChild("console text", ImVec2(0, -footer_height_to_reserve));
 		for (auto & content : console->get_content())
 		{
 			ImGui::TextColored(content.colour, content.text.c_str());
@@ -59,13 +61,24 @@ int main()
 				ImGui::SameLine();
 		}
 
+		if (console->get_scroll_to_bottom())
+			ImGui::SetScrollHereY(1.0f);
+
+		console->clear_scroll_to_bottom();
 		ImGui::EndChild();
+		//ImGui::Separator();
 		ImGui::Spacing();
-		if (ImGui::InputText("console input", buffer, IM_ARRAYSIZE(buffer), ImGuiInputTextFlags_EnterReturnsTrue))
+		bool reclaim_focus = false;
+		if (ImGui::InputText("Lua Input", buffer, IM_ARRAYSIZE(buffer), ImGuiInputTextFlags_EnterReturnsTrue))
 		{
 			LuaScript::process(buffer);
 			buffer[0] = 0;
+			reclaim_focus = true;
 		}
+
+		ImGui::SetItemDefaultFocus();
+		if (reclaim_focus)
+			ImGui::SetKeyboardFocusHere(-1); // Auto focus previous widget
 
 		ImGui::End();
 

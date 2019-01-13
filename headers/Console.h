@@ -23,6 +23,8 @@ public:
 
 	void set_priority(PRIORITY prio) { priority = prio; }
 	void print(const char *format, ...);
+	bool get_scroll_to_bottom() const { return scroll_to_bottom; }
+	void clear_scroll_to_bottom() { scroll_to_bottom = false; }
 
 	const std::vector<ConsoleContent> & get_content() const { return content; }
 
@@ -39,6 +41,7 @@ public:
 	static int open_library(lua_State *state);
 
 private:
+	bool scroll_to_bottom;
 	PRIORITY priority;
 	std::vector<ConsoleContent> content;
 
