@@ -25,6 +25,8 @@ int main()
 	if (loaded)
 		LuaScript::process_configuration(width, height, title, 256);
 
+	LuaScript::execute_function("game_startup");
+
 	sf::RenderWindow window(sf::VideoMode(width, height), title);
 	window.setFramerateLimit(60);
 	ImGui::SFML::Init(window);
@@ -84,11 +86,14 @@ int main()
 
 		ImGui::ShowDemoWindow();
 
+		LuaScript::execute_function("game_run");
+
 		window.clear();
 		ImGui::SFML::Render(window);
 		window.display();
 	}
 
+	LuaScript::execute_function("game_shutdown");
 	LuaScript::shutdown();
 
 	ImGui::SFML::Shutdown();

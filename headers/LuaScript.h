@@ -32,6 +32,7 @@ public:
 	static bool load_file(const char *filename);
 	static bool process(const char *buffer);
 	static bool process_configuration(int &width, int &height, char *title, int length);
+	static bool execute_function(const char *function_name);
 
 	static void create_texture_store(lua_State *state, sf::Texture *texture);
 	static void create_vector_store(lua_State *state, MakeIt::Vector2 *vector);

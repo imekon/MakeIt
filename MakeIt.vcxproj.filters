@@ -511,7 +511,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="game.lua">
+    <None Include="scripts\game.lua">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

@@ -176,7 +176,7 @@
     <ClInclude Include="imgui\imgui_internal.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="game.lua" />
+    <None Include="scripts\game.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

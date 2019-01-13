@@ -65,7 +65,7 @@ bool LuaScript::load_file(const char * filename)
 
 bool LuaScript::process(const char *buffer)
 {
-	int error = luaL_loadbuffer(state, buffer, strlen(buffer), "process") || lua_pcall(state, 0, 0, 0);
+	int error = luaL_loadbuffer(state, buffer, strlen(buffer), buffer) || lua_pcall(state, 0, 0, 0);
 	if (error)
 	{
 		print_error(state);
@@ -107,6 +107,20 @@ bool LuaScript::process_configuration(int &width, int &height, char *title, int 
 	}
 
 	lua_pop(state, 1);
+
+	return true;
+}
+
+bool LuaScript::execute_function(const char *function_name)
+{
+	lua_getglobal(state, function_name);
+	if (!lua_isfunction(state, -1))
+	{
+		lua_pop(state, 1);
+		return false;
+	}
+
+	lua_pcall(state, 0, 0, 0);
 
 	return true;
 }
