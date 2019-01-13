@@ -10,6 +10,7 @@ class Console;
 
 enum class DATA
 {
+	VECTOR,
 	TEXTURE,
 	NODE
 };

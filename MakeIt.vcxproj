@@ -111,6 +111,7 @@
     <ClCompile Include="src\Node3D.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
+    <ClCompile Include="src\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="box2d\Box2D.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="headers\Priority.h" />
     <ClInclude Include="headers\Sprite.h" />
     <ClInclude Include="headers\TextureManager.h" />
+    <ClInclude Include="headers\Vector2.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui-SFML.h" />
     <ClInclude Include="imgui\imgui.h" />

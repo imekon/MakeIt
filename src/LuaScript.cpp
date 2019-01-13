@@ -2,9 +2,12 @@
 
 #include "Console.h"
 #include "TextureManager.h"
+#include "Sprite.h"
 #include "LuaScript.h"
 
 const int NODE_STORE_MAGIC = 0x4c456761;
+
+using namespace MakeIt;
 
 luaL_Reg LuaScript::library[] =
 {
@@ -18,6 +21,7 @@ luaL_Reg LuaScript::libraries[] =
 	"System", LuaScript::open_library,
 	"Console", Console::open_library,
 	"Texture", TextureManager::open_library,
+	"Sprite", Sprite::open_library,
 
 	nullptr, nullptr
 };

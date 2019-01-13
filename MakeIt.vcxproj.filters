@@ -324,6 +324,9 @@
     <ClCompile Include="src\Sprite.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vector2.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -501,6 +504,9 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\Sprite.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Vector2.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
