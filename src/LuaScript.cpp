@@ -2,6 +2,7 @@
 
 #include "Console.h"
 #include "TextureManager.h"
+#include "Vector2.h"
 #include "Sprite.h"
 #include "LuaScript.h"
 
@@ -18,10 +19,11 @@ luaL_Reg LuaScript::library[] =
 
 luaL_Reg LuaScript::libraries[] =
 {
-	"System", LuaScript::open_library,
-	"Console", Console::open_library,
-	"Texture", TextureManager::open_library,
-	"Sprite", Sprite::open_library,
+	"System",	LuaScript::open_library,
+	"Console",	Console::open_library,
+	"Texture",	TextureManager::open_library,
+	"Vector2",	Vector2::open_library,
+	"Sprite",	Sprite::open_library,
 
 	nullptr, nullptr
 };
@@ -138,16 +140,25 @@ void LuaScript::open_libraries(lua_State *state)
 
 void LuaScript::create_texture_store(lua_State * state, sf::Texture * texture)
 {
-	NodeStore *node_store = static_cast<NodeStore *>(lua_newuserdata(state, sizeof(NodeStore)));
+	GenericDataStore *node_store = static_cast<GenericDataStore *>(lua_newuserdata(state, sizeof(GenericDataStore)));
 
 	node_store->magic = NODE_STORE_MAGIC;
 	node_store->type = DATA::TEXTURE;
 	node_store->data = texture;
 }
 
+void LuaScript::create_vector_store(lua_State * state, MakeIt::Vector2 * vector)
+{
+	GenericDataStore *node_store = static_cast<GenericDataStore *>(lua_newuserdata(state, sizeof(GenericDataStore)));
+
+	node_store->magic = NODE_STORE_MAGIC;
+	node_store->type = DATA::VECTOR;
+	node_store->data = vector;
+}
+
 void LuaScript::create_node_store(lua_State * state, MakeIt::Node * node)
 {
-	NodeStore *node_store = static_cast<NodeStore *>(lua_newuserdata(state, sizeof(NodeStore)));
+	GenericDataStore *node_store = static_cast<GenericDataStore *>(lua_newuserdata(state, sizeof(GenericDataStore)));
 
 	node_store->magic = NODE_STORE_MAGIC;
 	node_store->type = DATA::NODE;

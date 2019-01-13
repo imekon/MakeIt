@@ -25,8 +25,6 @@ namespace MakeIt
 
 		static luaL_Reg library[];
 
-		static int set_translate_feature(lua_State *state);
-		static int set_scale_feature(lua_State *state);
-		static int set_rotate_feature(lua_State *state);
+		static int create_feature(lua_State *state);
 	};
 }

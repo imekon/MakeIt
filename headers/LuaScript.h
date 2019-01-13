@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Vector2.h"
 #include "Node.h"
 
 class Console;
@@ -15,7 +16,7 @@ enum class DATA
 	NODE
 };
 
-struct NodeStore
+struct GenericDataStore
 {
 	int magic;
 	DATA type;
@@ -33,6 +34,7 @@ public:
 	static bool process_configuration(int &width, int &height, char *title, int length);
 
 	static void create_texture_store(lua_State *state, sf::Texture *texture);
+	static void create_vector_store(lua_State *state, MakeIt::Vector2 *vector);
 	static void create_node_store(lua_State *state, MakeIt::Node *node);
 
 private:

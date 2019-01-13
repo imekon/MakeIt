@@ -1,3 +1,4 @@
+#include "LuaScript.h"
 #include "Node2D.h"
 
 using namespace MakeIt;
@@ -12,17 +13,58 @@ Node2D::~Node2D()
 
 }
 
-void MakeIt::Node2D::set_translate(MakeIt::Vector2 vector)
+void Node2D::set_translate(MakeIt::Vector2 vector)
 {
 	translate = vector;
 }
 
-void MakeIt::Node2D::set_scale(MakeIt::Vector2 vector)
+void Node2D::set_scale(MakeIt::Vector2 vector)
 {
 	scale = vector;
 }
 
-void MakeIt::Node2D::set_rotate(float angle)
+void Node2D::set_rotate(float angle)
 {
 	rotate = angle;
+}
+
+int Node2D::set_translate_feature(lua_State * state)
+{
+	auto data_store = static_cast<GenericDataStore *>(lua_touserdata(state, 1));
+
+	if (data_store)
+	{
+		auto x = (float)lua_tonumber(state, 2);
+		auto y = (float)lua_tonumber(state, 3);
+		static_cast<Node2D *>(data_store->data)->set_translate(Vector2(x, y));
+	}
+
+	return 0;
+}
+
+int Node2D::set_scale_feature(lua_State * state)
+{
+	auto data_store = static_cast<GenericDataStore *>(lua_touserdata(state, 1));
+
+	if (data_store)
+	{
+		auto x = (float)lua_tonumber(state, 2);
+		auto y = (float)lua_tonumber(state, 3);
+		static_cast<Node2D *>(data_store->data)->set_scale(Vector2(x, y));
+	}
+
+	return 0;
+}
+
+int Node2D::set_rotate_feature(lua_State * state)
+{
+	auto data_store = static_cast<GenericDataStore *>(lua_touserdata(state, 1));
+
+	if (data_store)
+	{
+		auto angle = (float)lua_tonumber(state, 2);
+		static_cast<Node2D *>(data_store->data)->set_rotate(angle);
+	}
+
+	return 0;
 }
