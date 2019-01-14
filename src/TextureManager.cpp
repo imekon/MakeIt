@@ -62,16 +62,9 @@ int TextureManager::open_library(lua_State * state)
 
 int TextureManager::load_texture_feature(lua_State * state)
 {
-	auto num_args = lua_gettop(state);
-
-	for (int index = 1; index <= num_args; index++)
-	{
-		auto text = lua_tostring(state, index);
-		auto texture = instance->load_texture(text);
-		if (texture)
-			LuaScript::create_texture_store(state, texture);
-		return 1;
-	}
-
-	return 0;
+	auto text = lua_tostring(state, 1);
+	auto texture = instance->load_texture(text);
+	if (texture)
+		LuaScript::create_texture_store(state, texture);
+	return 1;
 }

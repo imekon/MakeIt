@@ -26,5 +26,6 @@ namespace MakeIt
 		static luaL_Reg library[];
 
 		static int create_feature(lua_State *state);
+		static int set_texture_feature(lua_State *state);
 	};
 }

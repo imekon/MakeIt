@@ -9,6 +9,7 @@ luaL_Reg Sprite::library[] =
 	"set_translate",	Node2D::set_translate_feature,
 	"set_scale",		Node2D::set_scale_feature,
 	"set_rotate",		Node2D::set_rotate_feature,
+	"set_texture",		Sprite::set_texture_feature,
 
 	nullptr, nullptr
 };
@@ -58,5 +59,26 @@ int Sprite::create_feature(lua_State * state)
 	auto sprite = new Sprite();
 	LuaScript::create_node_store(state, sprite);
 	return 1;
+}
+
+int Sprite::set_texture_feature(lua_State *state)
+{
+	auto sprite_store = static_cast<GenericDataStore *>(lua_touserdata(state, 1));
+	if (sprite_store && sprite_store->type == DATA::NODE)
+	{
+		auto sprite = static_cast<Sprite *>(sprite_store->data);
+		if (sprite)
+		{
+			auto texture_store = static_cast<GenericDataStore *>(lua_touserdata(state, 2));
+
+			if (texture_store && texture_store->type == DATA::TEXTURE)
+			{
+				auto texture = static_cast<sf::Texture *>(texture_store->data);
+				sprite->set_texture(texture);
+			}
+		}
+	}
+
+	return 0;
 }
 
