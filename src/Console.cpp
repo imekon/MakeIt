@@ -1,18 +1,16 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#include <lua.hpp>
+#include <LuaBridge.h>
+
 #include "Console.h"
 
-luaL_Reg Console::library[] =
-{
-	"print", Console::print_feature,
-
-	nullptr, nullptr
-};
+using namespace luabridge;
 
 Console *Console::console = nullptr;
 
-Console::Console() : scroll_to_bottom(false), priority(PRIORITY::LOW)
+Console::Console() : scroll_to_bottom(false), _priority(PRIORITY::LOW)
 {
 
 }
@@ -39,7 +37,7 @@ void Console::print(const char *format, ...)
 			chunk[index] = 0;
 
 			ConsoleContent cont;
-			cont.colour = get_priority_colour(priority);
+			cont.colour = get_priority_colour(_priority);
 			cont.newLine = true;
 			cont.text = chunk;
 			content.push_back(cont);
@@ -53,7 +51,7 @@ void Console::print(const char *format, ...)
 		chunk[index] = 0;
 
 		ConsoleContent cont;
-		cont.colour = get_priority_colour(priority);
+		cont.colour = get_priority_colour(_priority);
 		cont.newLine = false;
 		cont.text = chunk;
 		content.push_back(cont);
@@ -64,30 +62,26 @@ void Console::print(const char *format, ...)
 	va_end(args);
 }
 
-int Console::open_library(lua_State * state)
+void Console::print_error(const char *message)
 {
-	// Replace standard print with our one
-	lua_register(state, "print", print_feature);
-
-	luaL_newlib(state, library);
-	return 1;
+	auto priority = _priority;
+	_priority = PRIORITY::HIGH;
+	print("%s\n", message);
+	_priority = priority;
 }
 
-int Console::print_feature(lua_State * state)
+void Console::lua_print(const char *message)
 {
-	auto console = getInstance();
+	getInstance()->print("%s\n", message);
+}
 
-	auto num_args = lua_gettop(state);
-
-	for (int index = 1; index <= num_args; index++)
-	{
-		auto text = lua_tostring(state, index);
-		
-		console->print(text);
-		console->print("\n");
-	}
-
-	return 0;
+void Console::open_library(lua_State * state)
+{
+	getGlobalNamespace(state)
+		.addFunction("print", lua_print)
+		.beginNamespace("Console")
+		.addFunction("print", lua_print)
+		.endNamespace();
 }
 
 ImVec4 Console::get_priority_colour(PRIORITY priority)

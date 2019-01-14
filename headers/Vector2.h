@@ -9,20 +9,16 @@ namespace MakeIt
 	public:
 		Vector2(float x, float y);
 
-		float get_x() const { return x; }
-		float get_y() const { return y; }
+		float get_x() const { return _x; }
+		float get_y() const { return _y; }
+		void set_x(float x) { _x = x; }
+		void set_y(float y) { _y = y; }
 
-		void set(float _x, float _y);
-
-		static int open_library(lua_State *state);
+		static void open_library(lua_State *state);
 
 	private:
-		float x, y;
+		float _x, _y;
 
-		static luaL_Reg library[];
-
-		static int create_feature(lua_State *state);
-		static int get_feature(lua_State *state);
-		static int set_feature(lua_State *state);
+		static Vector2 *create(float x, float y);
 	};
 }

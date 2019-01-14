@@ -42,11 +42,7 @@ private:
 	static Console *console;
 	static lua_State *state;
 
-	static luaL_Reg library[];
-	static luaL_Reg libraries[];
-
-	static void print_error(lua_State *state);
-	static int open_library(lua_State *state);
+	static void open_library(lua_State *state);
 	static void open_libraries(lua_State *state);
-	static int versions(lua_State *state);
+	static void versions();
 };

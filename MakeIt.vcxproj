@@ -174,6 +174,27 @@
     <ClInclude Include="imgui\imgui-SFML.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\CFunctions.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\ClassInfo.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Constructor.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\dump.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\FuncTraits.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Iterator.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\LuaException.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\LuaHelpers.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\LuaRef.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Namespace.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Security.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Stack.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\TypeList.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\TypeTraits.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Userdata.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\List.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\LuaBridge.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\Map.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\RefCountedObject.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\RefCountedPtr.h" />
+    <ClInclude Include="LuaBridge\Source\LuaBridge\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\game.lua" />
@@ -250,7 +271,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d;LuaBridge/Source;LuaBridge/Source/LuaBridge;LuaBridge/Source/LuaBridge/detail</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -267,7 +288,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d;LuaBridge/Source;LuaBridge/Source/LuaBridge;LuaBridge/Source/LuaBridge/detail</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -286,7 +307,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d;LuaBridge/Source;LuaBridge/Source/LuaBridge;LuaBridge/Source/LuaBridge/detail</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -307,7 +328,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;headers;SFML/include;imgui;lua;box2d;LuaBridge/Source;LuaBridge/Source/LuaBridge;LuaBridge/Source/LuaBridge/detail</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

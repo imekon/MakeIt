@@ -1,9 +1,25 @@
 #pragma once
 
 #include <lua.hpp>
+#include <LuaBridge.h>
 
 #include <vector>
 #include <SFML/Graphics.hpp>
+
+class Texture
+{
+public:
+	Texture();
+	virtual ~Texture();
+
+	sf::Texture *get_texture() const { return _texture; }
+	bool load(const char *filename);
+
+	static Texture *create(const char *filename);
+
+private:
+	sf::Texture *_texture;
+};
 
 class TextureManager
 {
@@ -11,17 +27,14 @@ public:
 	TextureManager();
 	~TextureManager();
 
-	sf::Texture *load_texture(const char *filename);
+	void add_texture(Texture *texture);
 
 	static TextureManager *getInstance();
 	static void shutdown();
-	static int open_library(lua_State *state);
+	static void open_library(lua_State *state);
 
 private:
 	static TextureManager *instance;
 
-	std::vector<sf::Texture *> textures;
-
-	static luaL_Reg library[];
-	static int load_texture_feature(lua_State *state);
+	std::vector<Texture *> textures;
 };

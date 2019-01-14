@@ -21,8 +21,9 @@ class Console
 public:
 	Console();
 
-	void set_priority(PRIORITY prio) { priority = prio; }
+	void set_priority(PRIORITY prio) { _priority = prio; }
 	void print(const char *format, ...);
+	void print_error(const char *message);
 	bool get_scroll_to_bottom() const { return scroll_to_bottom; }
 	void clear_scroll_to_bottom() { scroll_to_bottom = false; }
 
@@ -38,16 +39,16 @@ public:
 
 	static void shutdown();
 
-	static int open_library(lua_State *state);
+	static void open_library(lua_State *state);
 
 private:
 	bool scroll_to_bottom;
-	PRIORITY priority;
+	PRIORITY _priority;
 	std::vector<ConsoleContent> content;
 
 	static Console *console;
-	static luaL_Reg library[];
 
 	ImVec4 get_priority_colour(PRIORITY priority);
-	static int print_feature(lua_State *state);
+
+	static void lua_print(const char *message);
 };

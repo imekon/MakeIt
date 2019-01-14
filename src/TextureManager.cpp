@@ -2,16 +2,40 @@
 #include "TextureManager.h"
 
 using namespace std;
-using namespace sf;
+using namespace luabridge;
 
 TextureManager *TextureManager::instance = nullptr;
 
-luaL_Reg TextureManager::library[] =
+Texture::Texture() : _texture(nullptr)
 {
-	"load", TextureManager::load_texture_feature,
+}
 
-	nullptr, nullptr
-};
+Texture::~Texture()
+{
+	if (_texture)
+		delete _texture;
+}
+
+bool Texture::load(const char * filename)
+{
+	_texture = new sf::Texture();
+	if (!_texture->loadFromFile(filename))
+	{
+		delete _texture;
+		_texture = nullptr;
+		return false;
+	}
+
+	return true;
+}
+
+Texture * Texture::create(const char * filename)
+{
+	auto texture = new Texture();
+	texture->load(filename);
+	TextureManager::getInstance()->add_texture(texture);
+	return texture;
+}
 
 TextureManager::TextureManager()
 {
@@ -25,17 +49,9 @@ TextureManager::~TextureManager()
 	}
 }
 
-Texture *TextureManager::load_texture(const char * filename)
+void TextureManager::add_texture(Texture *texture)
 {
-	sf::Texture *texture = new sf::Texture();
-	if (!texture->loadFromFile(filename))
-	{
-		delete texture;
-		return nullptr;
-	}
-
 	textures.push_back(texture);
-	return texture;
 }
 
 TextureManager * TextureManager::getInstance()
@@ -54,17 +70,10 @@ void TextureManager::shutdown()
 	instance = nullptr;
 }
 
-int TextureManager::open_library(lua_State * state)
+void TextureManager::open_library(lua_State * state)
 {
-	luaL_newlib(state, library);
-	return 1;
+	getGlobalNamespace(state).beginClass<Texture>("Texture")
+		.addStaticFunction("create", Texture::create)
+		.endClass();
 }
 
-int TextureManager::load_texture_feature(lua_State * state)
-{
-	auto text = lua_tostring(state, 1);
-	auto texture = instance->load_texture(text);
-	if (texture)
-		LuaScript::create_texture_store(state, texture);
-	return 1;
-}
