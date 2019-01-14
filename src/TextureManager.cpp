@@ -3,6 +3,7 @@
 
 using namespace std;
 using namespace luabridge;
+using namespace MakeIt;
 
 TextureManager *TextureManager::instance = nullptr;
 

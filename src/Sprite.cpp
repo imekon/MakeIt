@@ -8,7 +8,7 @@
 using namespace luabridge;
 using namespace MakeIt;
 
-Sprite::Sprite()
+Sprite::Sprite() : _z(0)
 {
 
 }
@@ -22,24 +22,24 @@ void Sprite::set_position(MakeIt::Vector2 vector)
 {
 	Node2D::set_position(vector);
 
-	sprite.setPosition(position.get_x(), position.get_y());
+	_sprite.setPosition(position.get_x(), position.get_y());
 }
 
 void Sprite::set_scale(MakeIt::Vector2 vector)
 {
 	Node2D::set_scale(vector);
-	sprite.setScale(vector.get_x(), vector.get_y());
+	_sprite.setScale(vector.get_x(), vector.get_y());
 }
 
 void Sprite::set_rotate(float angle)
 {
 	Node2D::set_rotate(angle);
-	sprite.setRotation(angle);
+	_sprite.setRotation(angle);
 }
 
 void Sprite::set_texture(Texture * texture)
 {
-	sprite.setTexture(*texture->get_texture());
+	_sprite.setTexture(*texture->get_texture());
 }
 
 void Sprite::open_library(lua_State * state)
@@ -49,6 +49,7 @@ void Sprite::open_library(lua_State * state)
 		.addProperty("position", &Node2D::get_position, &Sprite::set_position)
 		.addProperty("scale", &Node2D::get_scale, &Sprite::set_scale)
 		.addProperty("rotate", &Node2D::get_rotate, &Sprite::set_rotate)
+		.addProperty("z", &Sprite::get_z, &Sprite::set_z)
 		.addFunction("set_texture", &Sprite::set_texture)
 		.endClass();
 }

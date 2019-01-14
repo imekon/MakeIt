@@ -9,13 +9,15 @@
 #include "LuaScript.h"
 #include "TextureManager.h"
 
+using namespace MakeIt;
+
 int main()
 {
 	auto console = Console::getInstance();
 	auto texture_manager = TextureManager::getInstance();
 
 	LuaScript::initialise(console);
-	auto loaded = LuaScript::load_file("scripts\\game.lua");
+	auto loaded = LuaScript::load_file("scripts/game.lua");
 
 	int width = 1024;
 	int height = 600;

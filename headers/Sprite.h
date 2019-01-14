@@ -18,10 +18,14 @@ namespace MakeIt
 		void set_rotate(float angle) override;
 		void set_texture(Texture *texture);
 
+		int get_z() const { return _z; }
+		void set_z(int z) { _z = z; }
+
 		static void open_library(lua_State *state);
 
 	private:
-		sf::Sprite sprite;
+		int _z;
+		sf::Sprite _sprite;
 
 		static Sprite *create();
 	};
