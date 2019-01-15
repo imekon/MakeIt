@@ -38,6 +38,8 @@ int main()
 	char buffer[256];
 	buffer[0] = 0;
 
+	auto showConsole = true;
+
 	console->print("MakeIt Game Engine\n\nCopyright (c) 2019 Pete Goodwin\n\n");
 
 	sf::Clock deltaClock;
@@ -48,47 +50,67 @@ int main()
 		{
 			ImGui::SFML::ProcessEvent(event);
 
-			if (event.type == sf::Event::Closed) 
+			switch (event.type)
 			{
+			case sf::Event::Closed:
 				window.close();
+				break;
+
+			case sf::Event::EventType::KeyPressed:
+				if (event.key.code == sf::Keyboard::Quote)
+					showConsole = true;
+				break;
 			}
 		}
 
 		ImGui::SFML::Update(window, deltaClock.restart());
 
-		ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
-		ImGui::Begin("Console");
-		const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
-		ImGui::BeginChild("console text", ImVec2(0, -footer_height_to_reserve));
-		for (auto & content : console->get_content())
+		if (showConsole)
 		{
-			ImGui::TextColored(content.colour, content.text.c_str());
-			if (!content.newLine)
-				ImGui::SameLine();
+			ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
+			ImGui::Begin("Console");
+
+			ImGui::BeginChild("buttons", ImVec2(520, 20));
+
+			if (ImGui::Button("Close"))
+				showConsole = false;
+
+			ImGui::SameLine();
+			ImGui::Button("Edit");
+			ImGui::EndChild();
+
+			const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
+			ImGui::BeginChild("console text", ImVec2(0, -footer_height_to_reserve));
+			for (auto & content : console->get_content())
+			{
+				ImGui::TextColored(content.colour, content.text.c_str());
+				if (!content.newLine)
+					ImGui::SameLine();
+			}
+
+			if (console->get_scroll_to_bottom())
+				ImGui::SetScrollHereY(1.0f);
+
+			console->clear_scroll_to_bottom();
+			ImGui::EndChild();
+
+			//ImGui::Separator();
+			ImGui::Spacing();
+			bool reclaim_focus = false;
+			if (ImGui::InputText("Lua Input", buffer, IM_ARRAYSIZE(buffer), ImGuiInputTextFlags_EnterReturnsTrue))
+			{
+				LuaScript::process(buffer);
+				buffer[0] = 0;
+				reclaim_focus = true;
+			}
+
+			ImGui::SetItemDefaultFocus();
+			if (reclaim_focus)
+				ImGui::SetKeyboardFocusHere(-1); // Auto focus previous widget
+
+			ImGui::End();
+			ImGui::ShowDemoWindow();
 		}
-
-		if (console->get_scroll_to_bottom())
-			ImGui::SetScrollHereY(1.0f);
-
-		console->clear_scroll_to_bottom();
-		ImGui::EndChild();
-		//ImGui::Separator();
-		ImGui::Spacing();
-		bool reclaim_focus = false;
-		if (ImGui::InputText("Lua Input", buffer, IM_ARRAYSIZE(buffer), ImGuiInputTextFlags_EnterReturnsTrue))
-		{
-			LuaScript::process(buffer);
-			buffer[0] = 0;
-			reclaim_focus = true;
-		}
-
-		ImGui::SetItemDefaultFocus();
-		if (reclaim_focus)
-			ImGui::SetKeyboardFocusHere(-1); // Auto focus previous widget
-
-		ImGui::End();
-
-		ImGui::ShowDemoWindow();
 
 		LuaScript::execute_function("game_run");
 
@@ -99,13 +121,14 @@ int main()
 	}
 
 	LuaScript::execute_function("game_shutdown");
-	LuaScript::shutdown();
 
 	ImGui::SFML::Shutdown();
 
 	Console::shutdown();
 	SpriteManager::shutdown();
 	TextureManager::shutdown();
+
+	LuaScript::shutdown();
 
 	return 0;
 }

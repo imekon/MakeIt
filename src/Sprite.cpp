@@ -1,5 +1,6 @@
 #include <lua.hpp>
 #include <LuaBridge.h>
+#include <RefCountedPtr.h>
 
 #include "LuaScript.h"
 #include "TextureManager.h"
@@ -10,13 +11,14 @@ using namespace MakeIt;
 
 SpriteManager *SpriteManager::instance = nullptr;
 
-Sprite::Sprite() : _z(0)
+Sprite::Sprite() : origin(0.0f, 0.0f), _z(0)
 {
-
+	SpriteManager::getInstance()->add_sprite(this);
 }
 
 Sprite::~Sprite()
 {
+	SpriteManager::getInstance()->remove_sprite(this);
 }
 
 void Sprite::set_position(MakeIt::Vector2 vector)
@@ -38,6 +40,12 @@ void Sprite::set_rotate(float angle)
 	_sprite.setRotation(angle);
 }
 
+void Sprite::set_origin(Vector2 vector)
+{
+	origin = vector;
+	_sprite.setOrigin(origin.get_x(), origin.get_y());
+}
+
 void Sprite::set_texture(Texture * texture)
 {
 	_sprite.setTexture(*texture->get_texture());
@@ -51,20 +59,14 @@ void Sprite::draw(sf::RenderWindow *window)
 void Sprite::open_library(lua_State * state)
 {
 	getGlobalNamespace(state).beginClass<Sprite>("Sprite")
-		.addStaticFunction("create", create)
+		.addConstructor<void(*) (void), RefCountedPtr<Sprite>>()
 		.addProperty("position", &Node2D::get_position, &Sprite::set_position)
 		.addProperty("scale", &Node2D::get_scale, &Sprite::set_scale)
 		.addProperty("rotate", &Node2D::get_rotate, &Sprite::set_rotate)
 		.addProperty("z", &Sprite::get_z, &Sprite::set_z)
+		.addProperty("origin", &Sprite::get_origin, &Sprite::set_origin)
 		.addFunction("set_texture", &Sprite::set_texture)
 		.endClass();
-}
-
-Sprite *Sprite::create()
-{
-	auto sprite = new Sprite();
-	SpriteManager::getInstance()->add_sprite(sprite);
-	return sprite;
 }
 
 SpriteManager::SpriteManager()
@@ -74,10 +76,6 @@ SpriteManager::SpriteManager()
 
 SpriteManager::~SpriteManager()
 {
-	for (auto sprite : sprites)
-	{
-		delete sprite;
-	}
 }
 
 void SpriteManager::add_sprite(Sprite *sprite)
@@ -87,7 +85,9 @@ void SpriteManager::add_sprite(Sprite *sprite)
 
 void SpriteManager::remove_sprite(Sprite *sprite)
 {
-
+	auto iter = find(sprites.begin(), sprites.end(), sprite);
+	if (iter != sprites.end())
+		sprites.erase(iter);
 }
 
 void SpriteManager::draw(sf::RenderWindow *window)

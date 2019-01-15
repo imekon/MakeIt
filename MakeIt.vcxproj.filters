@@ -52,6 +52,9 @@
     <Filter Include="LuaBridge\detail">
       <UniqueIdentifier>{2fdf7703-0e97-4171-aa66-c0fa2224c9bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="textures">
+      <UniqueIdentifier>{5f502aa4-8034-491a-82ae-548ed6672ca6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -583,5 +586,43 @@
     <None Include="scripts\game.lua">
       <Filter>scripts</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\ball.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\bat.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\blue.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\blueBlock.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\crate.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\green.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\greenBlock.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\ken.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\red.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\redBlock.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\yellow.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\yellowBlock.png">
+      <Filter>textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

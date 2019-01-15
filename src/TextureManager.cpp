@@ -1,6 +1,8 @@
 #include "LuaScript.h"
 #include "TextureManager.h"
 
+#include <RefCountedPtr.h>
+
 using namespace std;
 using namespace luabridge;
 using namespace MakeIt;
@@ -27,27 +29,13 @@ bool Texture::load(const char * filename)
 		return false;
 	}
 
-	return true;
-}
+	TextureManager::getInstance()->add_texture(this);
 
-Texture * Texture::create(const char * filename)
-{
-	auto texture = new Texture();
-	texture->load(filename);
-	TextureManager::getInstance()->add_texture(texture);
-	return texture;
+	return true;
 }
 
 TextureManager::TextureManager()
 {
-}
-
-TextureManager::~TextureManager()
-{
-	for (auto texture : textures)
-	{
-		delete texture;
-	}
 }
 
 void TextureManager::add_texture(Texture *texture)
@@ -74,7 +62,8 @@ void TextureManager::shutdown()
 void TextureManager::open_library(lua_State * state)
 {
 	getGlobalNamespace(state).beginClass<Texture>("Texture")
-		.addStaticFunction("create", Texture::create)
+		.addConstructor<void (*)(void), RefCountedPtr<Texture>>()
+		.addFunction("load", &Texture::load)
 		.endClass();
 }
 

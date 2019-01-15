@@ -17,6 +17,9 @@ namespace MakeIt
 		void set_position(MakeIt::Vector2 vector) override;
 		void set_scale(MakeIt::Vector2 vector) override;
 		void set_rotate(float angle) override;
+
+		Vector2 get_origin() const { return origin; }
+		void set_origin(Vector2 vector);
 		void set_texture(Texture *texture);
 
 		int get_z() const { return _z; }
@@ -29,8 +32,7 @@ namespace MakeIt
 	private:
 		int _z;
 		sf::Sprite _sprite;
-
-		static Sprite *create();
+		Vector2 origin;
 	};
 
 	class SpriteManager

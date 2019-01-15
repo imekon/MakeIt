@@ -199,6 +199,20 @@
   <ItemGroup>
     <None Include="scripts\game.lua" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\ball.png" />
+    <Image Include="textures\bat.png" />
+    <Image Include="textures\blue.png" />
+    <Image Include="textures\blueBlock.png" />
+    <Image Include="textures\crate.png" />
+    <Image Include="textures\green.png" />
+    <Image Include="textures\greenBlock.png" />
+    <Image Include="textures\ken.png" />
+    <Image Include="textures\red.png" />
+    <Image Include="textures\redBlock.png" />
+    <Image Include="textures\yellow.png" />
+    <Image Include="textures\yellowBlock.png" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{EE52AB52-8B35-4AD5-8EF4-EB00553C09C7}</ProjectGuid>

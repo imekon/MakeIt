@@ -17,8 +17,6 @@ namespace MakeIt
 		sf::Texture *get_texture() const { return _texture; }
 		bool load(const char *filename);
 
-		static Texture *create(const char *filename);
-
 	private:
 		sf::Texture *_texture;
 	};
@@ -27,7 +25,6 @@ namespace MakeIt
 	{
 	public:
 		TextureManager();
-		~TextureManager();
 
 		void add_texture(Texture *texture);
 
