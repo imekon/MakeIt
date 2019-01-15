@@ -16,6 +16,7 @@ using namespace MakeIt;
 
 Console *LuaScript::console = nullptr;
 lua_State *LuaScript::state = nullptr;
+bool LuaScript::running = true;
 
 void LuaScript::initialise(Console *cons)
 {
@@ -99,10 +100,15 @@ bool LuaScript::process_configuration(int &width, int &height, char *title, int 
 
 bool LuaScript::execute_function(const char *function_name)
 {
+	if (!running)
+		return false;
+
 	lua_getglobal(state, function_name);
 	if (!lua_isfunction(state, -1))
 	{
+		console->print_error(lua_tostring(state, -1));
 		lua_pop(state, 1);
+		running = false;
 		return false;
 	}
 

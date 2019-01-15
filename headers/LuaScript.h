@@ -39,6 +39,7 @@ public:
 	static void create_node_store(lua_State *state, MakeIt::Node *node);
 
 private:
+	static bool running;
 	static Console *console;
 	static lua_State *state;
 

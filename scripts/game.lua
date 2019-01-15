@@ -1,11 +1,10 @@
 configuration = { width = 1280, height = 800, title = "This is MakeIt sample" }
 
-running = false
-
 function game_startup()
-	t = Texture.load("textures/red.png")
+	t = Texture.create("textures/crate.png")
 	s = Sprite.create()
-	Sprite.set_texture(s, t)
+	s:set_texture(t)
+	s.position = Vector2.create(100, 100)
 end
 
 function game_run()

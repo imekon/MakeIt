@@ -8,6 +8,7 @@
 #include "Console.h"
 #include "LuaScript.h"
 #include "TextureManager.h"
+#include "Sprite.h"
 
 using namespace MakeIt;
 
@@ -15,6 +16,7 @@ int main()
 {
 	auto console = Console::getInstance();
 	auto texture_manager = TextureManager::getInstance();
+	auto sprite_manager = SpriteManager::getInstance();
 
 	LuaScript::initialise(console);
 	auto loaded = LuaScript::load_file("scripts/game.lua");
@@ -91,6 +93,7 @@ int main()
 		LuaScript::execute_function("game_run");
 
 		window.clear();
+		sprite_manager->draw(&window);
 		ImGui::SFML::Render(window);
 		window.display();
 	}
@@ -101,6 +104,7 @@ int main()
 	ImGui::SFML::Shutdown();
 
 	Console::shutdown();
+	SpriteManager::shutdown();
 	TextureManager::shutdown();
 
 	return 0;

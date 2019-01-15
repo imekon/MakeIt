@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <lua.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -21,6 +22,8 @@ namespace MakeIt
 		int get_z() const { return _z; }
 		void set_z(int z) { _z = z; }
 
+		void draw(sf::RenderWindow *window);
+
 		static void open_library(lua_State *state);
 
 	private:
@@ -28,5 +31,25 @@ namespace MakeIt
 		sf::Sprite _sprite;
 
 		static Sprite *create();
+	};
+
+	class SpriteManager
+	{
+	public:
+		SpriteManager();
+		~SpriteManager();
+
+		void add_sprite(Sprite *sprite);
+		void remove_sprite(Sprite *sprite);
+
+		void draw(sf::RenderWindow *window);
+
+		static SpriteManager *getInstance();
+		static void shutdown();
+
+	private:
+		std::vector<Sprite *> sprites;
+
+		static SpriteManager *instance;
 	};
 }
