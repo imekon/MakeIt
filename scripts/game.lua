@@ -9,12 +9,16 @@ function game_startup()
 
 	s1 = Sprite()
 	s1:set_texture(crate)
+	s1.z = 10
 	s1.origin = Vector2(16, 16)
 	s1.position = Vector2(100, 100)
 
 	s2 = Sprite()
 	s2:set_texture(ball)
-	s2.position = Vector2(300, 100)
+	s2.z = -10
+	s2.position = Vector2(100, 100)
+
+	Sprite.sort()
 end
 
 function game_run()

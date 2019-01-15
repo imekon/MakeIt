@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include <lua.hpp>
 #include <LuaBridge.h>
 #include <RefCountedPtr.h>
@@ -11,7 +13,7 @@ using namespace MakeIt;
 
 SpriteManager *SpriteManager::instance = nullptr;
 
-Sprite::Sprite() : origin(0.0f, 0.0f), _z(0)
+Sprite::Sprite() : _origin(0.0f, 0.0f), _z(0), _visible(true)
 {
 	SpriteManager::getInstance()->add_sprite(this);
 }
@@ -42,8 +44,8 @@ void Sprite::set_rotate(float angle)
 
 void Sprite::set_origin(Vector2 vector)
 {
-	origin = vector;
-	_sprite.setOrigin(origin.get_x(), origin.get_y());
+	_origin = vector;
+	_sprite.setOrigin(_origin.get_x(), _origin.get_y());
 }
 
 void Sprite::set_texture(Texture * texture)
@@ -65,7 +67,9 @@ void Sprite::open_library(lua_State * state)
 		.addProperty("rotate", &Node2D::get_rotate, &Sprite::set_rotate)
 		.addProperty("z", &Sprite::get_z, &Sprite::set_z)
 		.addProperty("origin", &Sprite::get_origin, &Sprite::set_origin)
+		.addProperty("visible", &Sprite::get_visible, &Sprite::set_visible)
 		.addFunction("set_texture", &Sprite::set_texture)
+		.addStaticFunction("sort", &SpriteManager::sort)
 		.endClass();
 }
 
@@ -94,8 +98,14 @@ void SpriteManager::draw(sf::RenderWindow *window)
 {
 	for (auto sprite : sprites)
 	{
-		sprite->draw(window);
+		if (sprite->get_visible())
+			sprite->draw(window);
 	}
+}
+
+void SpriteManager::sort()
+{
+	std::sort(instance->sprites.begin(), instance->sprites.end());
 }
 
 SpriteManager *SpriteManager::getInstance()
