@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "Vector2.h"
 #include "Sprite.h"
+#include "Scene.h"
 #include "LuaScript.h"
 
 const int NODE_STORE_MAGIC = 0x4c456761;
@@ -131,6 +132,7 @@ void LuaScript::register_classes(lua_State *state)
 	Vector2::register_class(state);
 	TextureManager::register_class(state);
 	Sprite::register_class(state);
+	Scene::register_class(state);
 	Console::register_class(state);
 }
 

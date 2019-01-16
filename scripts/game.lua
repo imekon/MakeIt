@@ -9,18 +9,19 @@ function game_startup()
 	ball = Texture()
 	ball:load("textures/ball.png")
 
-	crates = {}
-	for i=0,9 do
-		s = Sprite()
-		s:set_texture(crate)
-		s.position = Vector2(100 + i * crate_width, 100)
-		crates[i] = s
-	end
+	root = Scene()
+	Scene.set_root(root)
+
+	s1 = Sprite()
+	s1:set_texture(crate)
+	s1.position = Vector2(100, 100)
+	root:add_child(s1)
 
 	s2 = Sprite()
 	s2:set_texture(ball)
 	-- s2.z = -10
 	s2.position = Vector2(125, 100)
+	-- root:add_child(s2)
 
 	-- Sprite.sort()
 end

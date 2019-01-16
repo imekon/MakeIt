@@ -11,16 +11,12 @@
 using namespace luabridge;
 using namespace MakeIt;
 
-SpriteManager *SpriteManager::instance = nullptr;
-
-Sprite::Sprite() : _origin(0.0f, 0.0f), _z(0), _visible(true)
+Sprite::Sprite() : _origin(0.0f, 0.0f), _z(0)
 {
-	SpriteManager::getInstance()->add_sprite(this);
 }
 
 Sprite::~Sprite()
 {
-	SpriteManager::getInstance()->remove_sprite(this);
 }
 
 void Sprite::set_position(MakeIt::Vector2 vector)
@@ -55,7 +51,30 @@ void Sprite::set_texture(Texture * texture)
 
 void Sprite::draw(sf::RenderWindow *window)
 {
-	window->draw(_sprite);
+	if (_visible)
+	{
+		Node2D::draw(window);
+		window->draw(_sprite);
+	}
+}
+
+void Sprite::sort()
+{
+	struct
+	{
+		bool operator()(Node *a, Node *b) const
+		{
+			auto sprite1 = dynamic_cast<Sprite *>(a);
+			auto sprite2 = dynamic_cast<Sprite *>(b);
+
+			if (sprite1 && sprite2)
+				return sprite1->get_z() < sprite2->get_z();
+
+			return false;
+		}
+	} compare_sprites;
+
+	std::sort(_children.begin(), _children.end(), compare_sprites);
 }
 
 void Sprite::register_class(lua_State * state)
@@ -67,67 +86,9 @@ void Sprite::register_class(lua_State * state)
 		.addProperty("rotate", &Node2D::get_rotate, &Sprite::set_rotate)
 		.addProperty("z", &Sprite::get_z, &Sprite::set_z)
 		.addProperty("origin", &Sprite::get_origin, &Sprite::set_origin)
-		.addProperty("visible", &Sprite::get_visible, &Sprite::set_visible)
+		.addProperty("visible", &Node::get_visible, &Node::set_visible)
 		.addFunction("set_texture", &Sprite::set_texture)
-		.addStaticFunction("sort", &SpriteManager::sort)
+		.addFunction("add_child", &Node::add_child)
+		.addFunction("remove_child", &Node::remove_child)
 		.endClass();
-}
-
-SpriteManager::SpriteManager()
-{
-
-}
-
-SpriteManager::~SpriteManager()
-{
-}
-
-void SpriteManager::add_sprite(Sprite *sprite)
-{
-	sprites.push_back(sprite);
-}
-
-void SpriteManager::remove_sprite(Sprite *sprite)
-{
-	auto iter = find(sprites.begin(), sprites.end(), sprite);
-	if (iter != sprites.end())
-		sprites.erase(iter);
-}
-
-void SpriteManager::draw(sf::RenderWindow *window)
-{
-	for (auto sprite : sprites)
-	{
-		if (sprite->get_visible())
-			sprite->draw(window);
-	}
-}
-
-void SpriteManager::sort()
-{
-	struct
-	{
-		bool operator()(Sprite *a, Sprite *b) const
-		{
-			return a->get_z() < b->get_z();
-		}
-	} compare_sprites;
-
-	std::sort(instance->sprites.begin(), instance->sprites.end(), compare_sprites);
-}
-
-SpriteManager *SpriteManager::getInstance()
-{
-	if (instance == nullptr)
-		instance = new SpriteManager();
-
-	return instance;
-}
-
-void SpriteManager::shutdown()
-{
-	if (instance)
-		delete instance;
-
-	instance = nullptr;
 }

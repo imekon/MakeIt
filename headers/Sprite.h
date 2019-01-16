@@ -25,39 +25,15 @@ namespace MakeIt
 		int get_z() const { return _z; }
 		void set_z(int z) { _z = z; }
 
-		bool get_visible() const { return _visible; }
-		void set_visible(bool visible) { _visible = visible; }
+		void sort();
 
-		void draw(sf::RenderWindow *window);
+		void draw(sf::RenderWindow *window) override;
 
 		static void register_class(lua_State *state);
 
 	private:
-		bool _visible;
 		int _z;
 		sf::Sprite _sprite;
 		Vector2 _origin;
-	};
-
-	class SpriteManager
-	{
-	public:
-		SpriteManager();
-		~SpriteManager();
-
-		void add_sprite(Sprite *sprite);
-		void remove_sprite(Sprite *sprite);
-
-		void draw(sf::RenderWindow *window);
-
-		static void sort();
-
-		static SpriteManager *getInstance();
-		static void shutdown();
-
-	private:
-		std::vector<Sprite *> sprites;
-
-		static SpriteManager *instance;
 	};
 }

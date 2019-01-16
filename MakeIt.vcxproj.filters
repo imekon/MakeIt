@@ -336,6 +336,9 @@
     <ClCompile Include="src\Vector2.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Scene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -580,6 +583,9 @@
     </ClInclude>
     <ClInclude Include="LuaBridge\Source\LuaBridge\detail\Userdata.h">
       <Filter>LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Scene.h">
+      <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

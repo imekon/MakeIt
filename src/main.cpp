@@ -9,6 +9,7 @@
 #include "LuaScript.h"
 #include "TextureManager.h"
 #include "Sprite.h"
+#include "Scene.h"
 
 using namespace MakeIt;
 
@@ -16,7 +17,6 @@ int main()
 {
 	auto console = Console::getInstance();
 	auto texture_manager = TextureManager::getInstance();
-	auto sprite_manager = SpriteManager::getInstance();
 
 	LuaScript::initialise(console);
 	auto loaded = LuaScript::load_file("scripts/game.lua");
@@ -41,6 +41,8 @@ int main()
 	auto showConsole = true;
 
 	console->print("MakeIt Game Engine\n\nCopyright (c) 2019 Pete Goodwin\n\n");
+
+	auto root = Scene::get_root();
 
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
@@ -115,7 +117,8 @@ int main()
 		LuaScript::execute_function("game_run");
 
 		window.clear();
-		sprite_manager->draw(&window);
+		if (root)
+			root->draw(&window);
 		ImGui::SFML::Render(window);
 		window.display();
 	}
@@ -125,7 +128,6 @@ int main()
 	ImGui::SFML::Shutdown();
 
 	Console::shutdown();
-	SpriteManager::shutdown();
 	TextureManager::shutdown();
 
 	LuaScript::shutdown();
