@@ -16,6 +16,8 @@ namespace MakeIt
 
 		sf::Texture *get_texture() const { return _texture; }
 		bool load(const char *filename);
+		int get_width() const;
+		int get_height() const;
 
 	private:
 		sf::Texture *_texture;
@@ -30,7 +32,7 @@ namespace MakeIt
 
 		static TextureManager *getInstance();
 		static void shutdown();
-		static void open_library(lua_State *state);
+		static void register_class(lua_State *state);
 
 	private:
 		static TextureManager *instance;

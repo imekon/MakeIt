@@ -14,8 +14,6 @@ namespace MakeIt
 		Sprite();
 		virtual ~Sprite();
 
-		bool operator<(const Sprite &rhs) { return _z < rhs._z; }
-
 		void set_position(MakeIt::Vector2 vector) override;
 		void set_scale(MakeIt::Vector2 vector) override;
 		void set_rotate(float angle) override;
@@ -32,7 +30,7 @@ namespace MakeIt
 
 		void draw(sf::RenderWindow *window);
 
-		static void open_library(lua_State *state);
+		static void register_class(lua_State *state);
 
 	private:
 		bool _visible;

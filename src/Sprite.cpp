@@ -58,7 +58,7 @@ void Sprite::draw(sf::RenderWindow *window)
 	window->draw(_sprite);
 }
 
-void Sprite::open_library(lua_State * state)
+void Sprite::register_class(lua_State * state)
 {
 	getGlobalNamespace(state).beginClass<Sprite>("Sprite")
 		.addConstructor<void(*) (void), RefCountedPtr<Sprite>>()
@@ -105,7 +105,15 @@ void SpriteManager::draw(sf::RenderWindow *window)
 
 void SpriteManager::sort()
 {
-	std::sort(instance->sprites.begin(), instance->sprites.end());
+	struct
+	{
+		bool operator()(Sprite *a, Sprite *b) const
+		{
+			return a->get_z() < b->get_z();
+		}
+	} compare_sprites;
+
+	std::sort(instance->sprites.begin(), instance->sprites.end(), compare_sprites);
 }
 
 SpriteManager *SpriteManager::getInstance()

@@ -13,7 +13,7 @@ Vector2::Vector2(float x, float y) : _x(x), _y(y)
 
 }
 
-void Vector2::open_library(lua_State * state)
+void Vector2::register_class(lua_State * state)
 {
 	getGlobalNamespace(state).beginClass<Vector2>("Vector2")
 		.addConstructor<void (*) (float, float), RefCountedPtr<Vector2>>()

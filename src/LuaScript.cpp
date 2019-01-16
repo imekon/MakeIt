@@ -23,7 +23,7 @@ void LuaScript::initialise(Console *cons)
 	console = cons;
 	state = luaL_newstate();
 	luaL_openlibs(state);
-	open_libraries(state);
+	register_classes(state);
 }
 
 void LuaScript::shutdown()
@@ -117,7 +117,7 @@ bool LuaScript::execute_function(const char *function_name)
 	return true;
 }
 
-void LuaScript::open_library(lua_State *state)
+void LuaScript::register_class(lua_State *state)
 {
 	getGlobalNamespace(state)
 		.beginNamespace("System")
@@ -125,13 +125,13 @@ void LuaScript::open_library(lua_State *state)
 		.endNamespace();
 }
 
-void LuaScript::open_libraries(lua_State *state)
+void LuaScript::register_classes(lua_State *state)
 {
-	open_library(state);
-	Vector2::open_library(state);
-	TextureManager::open_library(state);
-	Sprite::open_library(state);
-	Console::open_library(state);
+	register_class(state);
+	Vector2::register_class(state);
+	TextureManager::register_class(state);
+	Sprite::register_class(state);
+	Console::register_class(state);
 }
 
 void LuaScript::create_texture_store(lua_State * state, sf::Texture * texture)

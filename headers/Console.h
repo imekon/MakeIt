@@ -39,7 +39,7 @@ public:
 
 	static void shutdown();
 
-	static void open_library(lua_State *state);
+	static void register_class(lua_State *state);
 
 private:
 	bool scroll_to_bottom;

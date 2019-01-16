@@ -75,7 +75,7 @@ void Console::lua_print(const char *message)
 	getInstance()->print("%s\n", message);
 }
 
-void Console::open_library(lua_State * state)
+void Console::register_class(lua_State * state)
 {
 	getGlobalNamespace(state)
 		.addFunction("print", lua_print)

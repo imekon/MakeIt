@@ -14,7 +14,7 @@ namespace MakeIt
 		void set_x(float x) { _x = x; }
 		void set_y(float y) { _y = y; }
 
-		static void open_library(lua_State *state);
+		static void register_class(lua_State *state);
 
 	private:
 		float _x, _y;

@@ -34,6 +34,28 @@ bool Texture::load(const char * filename)
 	return true;
 }
 
+int Texture::get_width() const
+{
+	if (_texture)
+	{
+		auto size = _texture->getSize();
+		return size.x;
+	}
+
+	return 0;
+}
+
+int Texture::get_height() const
+{
+	if (_texture)
+	{
+		auto size = _texture->getSize();
+		return size.y;
+	}
+
+	return 0;
+}
+
 TextureManager::TextureManager()
 {
 }
@@ -59,11 +81,13 @@ void TextureManager::shutdown()
 	instance = nullptr;
 }
 
-void TextureManager::open_library(lua_State * state)
+void TextureManager::register_class(lua_State * state)
 {
 	getGlobalNamespace(state).beginClass<Texture>("Texture")
 		.addConstructor<void (*)(void), RefCountedPtr<Texture>>()
 		.addFunction("load", &Texture::load)
+		.addProperty("width", &Texture::get_width)
+		.addProperty("height", &Texture::get_height)
 		.endClass();
 }
 
