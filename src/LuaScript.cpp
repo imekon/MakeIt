@@ -113,7 +113,13 @@ bool LuaScript::execute_function(const char *function_name)
 		return false;
 	}
 
-	lua_pcall(state, 0, 0, 0);
+	if (!lua_pcall(state, 0, LUA_MULTRET, 0))
+	{
+		console->print_error(lua_tostring(state, -1));
+		lua_pop(state, 1);
+		running = false;
+		return false;
+	}
 
 	return true;
 }

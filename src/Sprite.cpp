@@ -19,11 +19,18 @@ Sprite::~Sprite()
 {
 }
 
+void Sprite::set_global_position(Vector2 vector)
+{
+	Node2D::set_global_position(vector);
+
+	_sprite.setPosition(_global_position.get_x() + _position.get_x(), _global_position.get_y() + _position.get_y());
+}
+
 void Sprite::set_position(MakeIt::Vector2 vector)
 {
 	Node2D::set_position(vector);
 
-	_sprite.setPosition(position.get_x(), position.get_y());
+	_sprite.setPosition(_global_position.get_x() + _position.get_x(), _global_position.get_y() + _position.get_y());
 }
 
 void Sprite::set_scale(MakeIt::Vector2 vector)

@@ -14,8 +14,9 @@ namespace MakeIt
 		Sprite();
 		virtual ~Sprite();
 
-		void set_position(MakeIt::Vector2 vector) override;
-		void set_scale(MakeIt::Vector2 vector) override;
+		void set_position(Vector2 vector) override;
+		void set_global_position(Vector2 vector) override;
+		void set_scale(Vector2 vector) override;
 		void set_rotate(float angle) override;
 
 		Vector2 get_origin() const { return _origin; }

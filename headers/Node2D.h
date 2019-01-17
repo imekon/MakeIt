@@ -12,18 +12,21 @@ namespace MakeIt
 		virtual ~Node2D();
 
 		virtual void set_position(MakeIt::Vector2 vector);
+		virtual void set_global_position(MakeIt::Vector2 vector);
 		virtual void set_scale(MakeIt::Vector2 vector);
 		virtual void set_rotate(float angle);
 
-		Vector2 get_position() const { return position; }
-		Vector2 get_scale() const { return scale; }
-		float get_rotate() const { return rotate; }
+		Vector2 get_position() const { return _position; }
+		Vector2 get_global_position() const { return _global_position; }
+		Vector2 get_scale() const { return _scale; }
+		float get_rotate() const { return _rotate; }
 
 		static void register_class(lua_State *state);
 
 	protected:
-		Vector2 position;
-		Vector2 scale;
-		float rotate;
+		Vector2 _position;
+		Vector2 _global_position;
+		Vector2 _scale;
+		float _rotate;
 	};
 }

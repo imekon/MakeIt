@@ -64,6 +64,9 @@ void Console::print(const char *format, ...)
 
 void Console::print_error(const char *message)
 {
+	if (message == nullptr)
+		return;
+
 	auto priority = _priority;
 	_priority = PRIORITY::HIGH;
 	print("%s\n", message);
