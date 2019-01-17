@@ -129,8 +129,10 @@ void LuaScript::register_class(lua_State *state)
 void LuaScript::register_classes(lua_State *state)
 {
 	register_class(state);
+	Node::register_class(state);
+	Node2D::register_class(state);
 	Vector2::register_class(state);
-	TextureManager::register_class(state);
+	Texture::register_class(state);
 	Sprite::register_class(state);
 	Scene::register_class(state);
 	Console::register_class(state);

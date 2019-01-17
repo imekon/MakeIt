@@ -15,11 +15,9 @@ Scene::Scene()
 
 void Scene::register_class(lua_State *state)
 {
-	getGlobalNamespace(state).beginClass<Scene>("Scene")
+	getGlobalNamespace(state).deriveClass<Scene, Node>("Scene")
 		.addConstructor<void (*)(void), RefCountedPtr<Scene>>()
 		.addStaticFunction("get_root", get_root)
 		.addStaticFunction("set_root", set_root)
-		.addFunction("add_child", &Node::add_child)
-		.addFunction("remove_child", &Node::remove_child)
 		.endClass();
 }

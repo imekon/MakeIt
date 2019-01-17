@@ -19,6 +19,8 @@ namespace MakeIt
 		Vector2 get_scale() const { return scale; }
 		float get_rotate() const { return rotate; }
 
+		static void register_class(lua_State *state);
+
 	protected:
 		Vector2 position;
 		Vector2 scale;

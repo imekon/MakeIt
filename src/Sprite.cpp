@@ -79,16 +79,11 @@ void Sprite::sort()
 
 void Sprite::register_class(lua_State * state)
 {
-	getGlobalNamespace(state).beginClass<Sprite>("Sprite")
+	getGlobalNamespace(state).deriveClass<Sprite, Node2D>("Sprite")
 		.addConstructor<void(*) (void), RefCountedPtr<Sprite>>()
-		.addProperty("position", &Node2D::get_position, &Sprite::set_position)
-		.addProperty("scale", &Node2D::get_scale, &Sprite::set_scale)
-		.addProperty("rotate", &Node2D::get_rotate, &Sprite::set_rotate)
 		.addProperty("z", &Sprite::get_z, &Sprite::set_z)
 		.addProperty("origin", &Sprite::get_origin, &Sprite::set_origin)
-		.addProperty("visible", &Node::get_visible, &Node::set_visible)
 		.addFunction("set_texture", &Sprite::set_texture)
-		.addFunction("add_child", &Node::add_child)
-		.addFunction("remove_child", &Node::remove_child)
+		.addFunction("sort", &Sprite::sort)
 		.endClass();
 }

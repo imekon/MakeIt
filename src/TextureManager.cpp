@@ -56,6 +56,16 @@ int Texture::get_height() const
 	return 0;
 }
 
+void Texture::register_class(lua_State * state)
+{
+	getGlobalNamespace(state).beginClass<Texture>("Texture")
+		.addConstructor<void(*)(void), RefCountedPtr<Texture>>()
+		.addFunction("load", &Texture::load)
+		.addProperty("width", &Texture::get_width)
+		.addProperty("height", &Texture::get_height)
+		.endClass();
+}
+
 TextureManager::TextureManager()
 {
 }
@@ -79,15 +89,5 @@ void TextureManager::shutdown()
 		delete instance;
 
 	instance = nullptr;
-}
-
-void TextureManager::register_class(lua_State * state)
-{
-	getGlobalNamespace(state).beginClass<Texture>("Texture")
-		.addConstructor<void (*)(void), RefCountedPtr<Texture>>()
-		.addFunction("load", &Texture::load)
-		.addProperty("width", &Texture::get_width)
-		.addProperty("height", &Texture::get_height)
-		.endClass();
 }
 

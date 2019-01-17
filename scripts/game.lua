@@ -19,11 +19,11 @@ function game_startup()
 
 	s2 = Sprite()
 	s2:set_texture(ball)
-	-- s2.z = -10
+	s2.z = -10
 	s2.position = Vector2(125, 100)
-	-- root:add_child(s2)
+	root:add_child(s2)
 
-	-- Sprite.sort()
+	-- root:sort()
 end
 
 function game_run()

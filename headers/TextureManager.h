@@ -19,6 +19,8 @@ namespace MakeIt
 		int get_width() const;
 		int get_height() const;
 
+		static void register_class(lua_State *state);
+
 	private:
 		sf::Texture *_texture;
 	};
@@ -32,7 +34,6 @@ namespace MakeIt
 
 		static TextureManager *getInstance();
 		static void shutdown();
-		static void register_class(lua_State *state);
 
 	private:
 		static TextureManager *instance;
