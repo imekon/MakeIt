@@ -23,7 +23,7 @@ function game_startup()
 	s2.position = Vector2(125, 100)
 	root:add_child(s2)
 
-	-- root:sort()
+	root:sort()
 end
 
 function game_run()

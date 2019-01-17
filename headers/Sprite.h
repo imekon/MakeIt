@@ -22,17 +22,11 @@ namespace MakeIt
 		void set_origin(Vector2 vector);
 		void set_texture(Texture *texture);
 
-		int get_z() const { return _z; }
-		void set_z(int z) { _z = z; }
-
-		void sort();
-
 		void draw(sf::RenderWindow *window) override;
 
 		static void register_class(lua_State *state);
 
 	private:
-		int _z;
 		sf::Sprite _sprite;
 		Vector2 _origin;
 	};

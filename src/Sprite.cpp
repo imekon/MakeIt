@@ -11,7 +11,7 @@
 using namespace luabridge;
 using namespace MakeIt;
 
-Sprite::Sprite() : _origin(0.0f, 0.0f), _z(0)
+Sprite::Sprite() : _origin(0.0f, 0.0f)
 {
 }
 
@@ -58,32 +58,11 @@ void Sprite::draw(sf::RenderWindow *window)
 	}
 }
 
-void Sprite::sort()
-{
-	struct
-	{
-		bool operator()(Node *a, Node *b) const
-		{
-			auto sprite1 = dynamic_cast<Sprite *>(a);
-			auto sprite2 = dynamic_cast<Sprite *>(b);
-
-			if (sprite1 && sprite2)
-				return sprite1->get_z() < sprite2->get_z();
-
-			return false;
-		}
-	} compare_sprites;
-
-	std::sort(_children.begin(), _children.end(), compare_sprites);
-}
-
 void Sprite::register_class(lua_State * state)
 {
 	getGlobalNamespace(state).deriveClass<Sprite, Node2D>("Sprite")
 		.addConstructor<void(*) (void), RefCountedPtr<Sprite>>()
-		.addProperty("z", &Sprite::get_z, &Sprite::set_z)
 		.addProperty("origin", &Sprite::get_origin, &Sprite::set_origin)
 		.addFunction("set_texture", &Sprite::set_texture)
-		.addFunction("sort", &Sprite::sort)
 		.endClass();
 }
