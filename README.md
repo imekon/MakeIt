@@ -10,6 +10,7 @@ I'm basing this one on:
 * ImGui
 * Box2D
 * LUA
+* LuaBridge (excellent tool to expose C++ classes in Lua)
 
 Why build yet another game engine?
 
