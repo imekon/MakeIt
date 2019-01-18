@@ -33,6 +33,7 @@ public:
 	static bool process(const char *buffer);
 	static bool process_configuration(int &width, int &height, char *title, int length);
 	static bool execute_function(const char *function_name);
+	static bool execute_function(const char *function_name, long arg1);
 
 	static void create_texture_store(lua_State *state, sf::Texture *texture);
 	static void create_vector_store(lua_State *state, MakeIt::Vector2 *vector);
@@ -46,4 +47,5 @@ private:
 	static void register_class(lua_State *state);
 	static void register_classes(lua_State *state);
 	static void versions();
+	static bool execute(int args);
 };

@@ -62,15 +62,17 @@ void Console::print(const char *format, ...)
 	va_end(args);
 }
 
-void Console::print_error(const char *message)
+bool Console::print_error(const char *message)
 {
 	if (message == nullptr)
-		return;
+		return false;
 
 	auto priority = _priority;
 	_priority = PRIORITY::HIGH;
 	print("%s\n", message);
 	_priority = priority;
+
+	return true;
 }
 
 void Console::lua_print(const char *message)

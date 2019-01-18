@@ -28,9 +28,13 @@ function game_startup()
 	root:add_child(n)
 
 	root:sort()
+
+	x = 100
 end
 
-function game_run()
+function game_run(delta)
+	x = x + 1000 / delta
+	s1.position = Vector2(x, 100)
 end
 
 function game_shutdown()

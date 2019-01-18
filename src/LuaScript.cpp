@@ -99,6 +99,19 @@ bool LuaScript::process_configuration(int &width, int &height, char *title, int 
 	return true;
 }
 
+bool LuaScript::execute(int args)
+{
+	if (!lua_pcall(state, args, 0, 0))
+	{
+		if (console->print_error(lua_tostring(state, -1)))
+			running = false;
+		lua_pop(state, 1);
+		return false;
+	}
+
+	return true;
+}
+
 bool LuaScript::execute_function(const char *function_name)
 {
 	if (!running)
@@ -107,21 +120,32 @@ bool LuaScript::execute_function(const char *function_name)
 	lua_getglobal(state, function_name);
 	if (!lua_isfunction(state, -1))
 	{
-		console->print_error(lua_tostring(state, -1));
+		if (console->print_error(lua_tostring(state, -1)))
+			running = false;
 		lua_pop(state, 1);
-		running = false;
 		return false;
 	}
 
-	if (!lua_pcall(state, 0, LUA_MULTRET, 0))
+	return execute(0);
+}
+
+bool LuaScript::execute_function(const char * function_name, long arg1)
+{
+	if (!running)
+		return false;
+
+	lua_getglobal(state, function_name);
+	if (!lua_isfunction(state, -1))
 	{
-		console->print_error(lua_tostring(state, -1));
+		if (console->print_error(lua_tostring(state, -1)))
+			running = false;
 		lua_pop(state, 1);
-		running = false;
 		return false;
 	}
 
-	return true;
+	lua_pushnumber(state, arg1);
+
+	return execute(1);
 }
 
 void LuaScript::register_class(lua_State *state)

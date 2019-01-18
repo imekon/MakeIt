@@ -40,7 +40,7 @@ int main()
 
 	auto showConsole = true;
 
-	console->print("MakeIt Game Engine\n\nCopyright (c) 2019 Pete Goodwin\n\n");
+	console->print("MakeIt Game Engine\n\nCopyright (C) 2019 Pete Goodwin\n\n");
 
 	auto root = Scene::get_root();
 
@@ -65,7 +65,8 @@ int main()
 			}
 		}
 
-		ImGui::SFML::Update(window, deltaClock.restart());
+		auto delta = deltaClock.restart();
+		ImGui::SFML::Update(window, delta);
 
 		if (showConsole)
 		{
@@ -114,7 +115,7 @@ int main()
 			ImGui::ShowDemoWindow();
 		}
 
-		LuaScript::execute_function("game_run");
+		LuaScript::execute_function("game_run", delta.asMilliseconds());
 
 		window.clear();
 		if (root)

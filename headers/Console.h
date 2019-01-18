@@ -23,7 +23,7 @@ public:
 
 	void set_priority(PRIORITY prio) { _priority = prio; }
 	void print(const char *format, ...);
-	void print_error(const char *message);
+	bool print_error(const char *message);
 	bool get_scroll_to_bottom() const { return scroll_to_bottom; }
 	void clear_scroll_to_bottom() { scroll_to_bottom = false; }
 
