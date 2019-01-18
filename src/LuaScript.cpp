@@ -101,14 +101,7 @@ bool LuaScript::process_configuration(int &width, int &height, char *title, int 
 
 bool LuaScript::execute(int args)
 {
-	if (!lua_pcall(state, args, 0, 0))
-	{
-		if (console->print_error(lua_tostring(state, -1)))
-			running = false;
-		lua_pop(state, 1);
-		return false;
-	}
-
+	lua_pcall(state, args, 0, 0);
 	return true;
 }
 
@@ -118,14 +111,6 @@ bool LuaScript::execute_function(const char *function_name)
 		return false;
 
 	lua_getglobal(state, function_name);
-	if (!lua_isfunction(state, -1))
-	{
-		if (console->print_error(lua_tostring(state, -1)))
-			running = false;
-		lua_pop(state, 1);
-		return false;
-	}
-
 	return execute(0);
 }
 
@@ -135,14 +120,6 @@ bool LuaScript::execute_function(const char * function_name, long arg1)
 		return false;
 
 	lua_getglobal(state, function_name);
-	if (!lua_isfunction(state, -1))
-	{
-		if (console->print_error(lua_tostring(state, -1)))
-			running = false;
-		lua_pop(state, 1);
-		return false;
-	}
-
 	lua_pushnumber(state, arg1);
 
 	return execute(1);

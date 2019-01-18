@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "Node.h"
 
 #include <LuaBridge.h>
@@ -7,9 +9,15 @@ using namespace std;
 using namespace luabridge;
 using namespace MakeIt;
 
+int Node::_name_counter = 0;
+
 Node::Node() : _visible(true), _z(0)
 {
-
+	_name_counter++;
+	
+	stringstream stream;
+	stream << "node" << _name_counter;
+	_name = stream.str();
 }
 
 Node::~Node()
@@ -49,11 +57,11 @@ void Node::sort()
 	std::sort(_children.begin(), _children.end(), compare_sprites);
 }
 
-
 void MakeIt::Node::register_class(lua_State * state)
 {
 	getGlobalNamespace(state).beginClass<Node>("Node")
 		.addConstructor<void (*)(void), RefCountedPtr<Node>>()
+		.addProperty("name", &Node::get_name, &Node::set_name)
 		.addProperty("visible", &Node::get_visible, &Node::set_visible)
 		.addProperty("z", &Node::get_z, &Node::set_z)
 		.addFunction("add_child", &Node::add_child)

@@ -12,8 +12,11 @@ namespace MakeIt
 		Node();
 		virtual ~Node();
 
+		virtual const char * get_name() const { return _name.c_str(); }
+		virtual void set_name(const char *text) { _name = text; }
 		virtual void add_child(Node *child);
 		virtual void remove_child(Node *child);
+		virtual std::vector<Node *> & get_children() { return _children; }
 		virtual void draw(sf::RenderWindow *window);
 		virtual bool get_visible() const { return _visible; }
 		virtual void set_visible(bool visible) { _visible = visible; }
@@ -28,6 +31,9 @@ namespace MakeIt
 	protected:
 		bool _visible;
 		int _z;
+		std::string _name;
 		std::vector<Node *> _children;
+
+		static int _name_counter;
 	};
 }

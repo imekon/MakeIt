@@ -13,6 +13,19 @@
 
 using namespace MakeIt;
 
+static void traverse_scene_tree(Node *node)
+{
+	for (auto child : node->get_children())
+	{
+		if (ImGui::TreeNode(child->get_name()))
+		{
+			traverse_scene_tree(child);
+
+			ImGui::TreePop();
+		}
+	}
+}
+
 int main()
 {
 	auto console = Console::getInstance();
@@ -32,6 +45,7 @@ int main()
 	LuaScript::execute_function("game_startup");
 
 	sf::RenderWindow window(sf::VideoMode(width, height), title);
+	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
 	ImGui::SFML::Init(window);
 
@@ -66,6 +80,7 @@ int main()
 		}
 
 		auto delta = deltaClock.restart();
+		auto fps = 1.0f / delta.asSeconds();
 		ImGui::SFML::Update(window, delta);
 
 		if (showConsole)
@@ -80,6 +95,8 @@ int main()
 
 			ImGui::SameLine();
 			ImGui::Button("Edit");
+			ImGui::SameLine();
+			ImGui::LabelText("fps", "FPS: %1.1f", fps);
 			ImGui::EndChild();
 
 			const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
@@ -114,6 +131,17 @@ int main()
 			ImGui::End();
 			ImGui::ShowDemoWindow();
 		}
+
+		ImGui::SetNextWindowSize(ImVec2(400, 300), ImGuiCond_FirstUseEver);
+		ImGui::Begin("Project");
+		if (ImGui::TreeNode("Scene"))
+		{
+			if (root)
+				traverse_scene_tree(root);
+
+			ImGui::TreePop();
+		}
+		ImGui::End();
 
 		LuaScript::execute_function("game_run", delta.asMilliseconds());
 

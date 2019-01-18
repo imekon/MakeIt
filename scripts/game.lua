@@ -11,16 +11,19 @@ function game_startup()
 	Scene.set_root(root)
 
 	n = Node2D()
+	n.name = "node"
 
 	s1 = Sprite()
 	s1:set_texture(crate)
 	s1.position = Vector2(100, 100)
+	s1.name = "crate"
 	n:add_child(s1)
 
 	s2 = Sprite()
 	s2:set_texture(ball)
 	s2.z = -10
 	s2.position = Vector2(200, 100)
+	s2.name = "ball"
 	n:add_child(s2)
 
 	n.position = Vector2(300, 300)
@@ -33,8 +36,6 @@ function game_startup()
 end
 
 function game_run(delta)
-	x = x + 1000 / delta
-	s1.position = Vector2(x, 100)
 end
 
 function game_shutdown()
