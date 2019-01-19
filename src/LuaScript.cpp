@@ -114,7 +114,7 @@ bool LuaScript::execute_function(const char *function_name)
 	return execute(0);
 }
 
-bool LuaScript::execute_function(const char * function_name, long arg1)
+bool LuaScript::execute_function(const char * function_name, float arg1)
 {
 	if (!running)
 		return false;

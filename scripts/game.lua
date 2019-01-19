@@ -15,6 +15,7 @@ function game_startup()
 
 	s1 = Sprite()
 	s1:set_texture(crate)
+	s1.z = 10
 	s1.position = Vector2(100, 100)
 	s1.name = "crate"
 	n:add_child(s1)
@@ -26,16 +27,21 @@ function game_startup()
 	s2.name = "ball"
 	n:add_child(s2)
 
-	n.position = Vector2(300, 300)
+	-- n.position = Vector2(300, 300)
 
 	root:add_child(n)
-
 	root:sort()
 
 	x = 100
+	rate = 0.05
 end
 
 function game_run(delta)
+	x = x + rate / delta
+	if x > 1180 then
+		x = 100
+	end
+	s1.position = Vector2(x, 100)
 end
 
 function game_shutdown()

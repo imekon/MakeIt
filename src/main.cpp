@@ -143,7 +143,7 @@ int main()
 		}
 		ImGui::End();
 
-		LuaScript::execute_function("game_run", delta.asMilliseconds());
+		LuaScript::execute_function("game_run", delta.asSeconds());
 
 		window.clear();
 		if (root)
