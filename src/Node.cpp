@@ -1,6 +1,7 @@
 #include <sstream>
 
 #include "Node.h"
+#include "Physics.h"
 
 #include <LuaBridge.h>
 #include <RefCountedPtr.h>
@@ -42,6 +43,14 @@ void Node::draw(sf::RenderWindow * window)
 	if (_visible)
 		for (auto child : _children)
 			child->draw(window);
+}
+
+void Node::update(Physics *physics)
+{
+	for (auto child : _children)
+	{
+		child->update(physics);
+	}
 }
 
 void Node::sort()

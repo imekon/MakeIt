@@ -6,6 +6,8 @@
 
 namespace MakeIt
 {
+	class Physics;
+
 	class Node
 	{
 	public:
@@ -20,6 +22,7 @@ namespace MakeIt
 		virtual void draw(sf::RenderWindow *window);
 		virtual bool get_visible() const { return _visible; }
 		virtual void set_visible(bool visible) { _visible = visible; }
+		virtual void update(Physics *physics);
 
 		int get_z() const { return _z; }
 		void set_z(int z) { _z = z; }

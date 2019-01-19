@@ -7,6 +7,9 @@ function game_startup()
 	ball = Texture()
 	ball:load("textures/ball.png")
 
+	physics = Physics(10.0, 30.0)
+	Physics.set_physics(physics)
+
 	root = Scene()
 	Scene.set_root(root)
 

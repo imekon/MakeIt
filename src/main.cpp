@@ -10,6 +10,7 @@
 #include "TextureManager.h"
 #include "Sprite.h"
 #include "Scene.h"
+#include "Physics.h"
 
 using namespace MakeIt;
 
@@ -29,7 +30,7 @@ static void traverse_scene_tree(Node *node)
 int main()
 {
 	auto console = Console::getInstance();
-	auto texture_manager = TextureManager::getInstance();
+	auto texture_manager = TextureManager::get_instance();
 
 	LuaScript::initialise(console);
 	auto loaded = LuaScript::load_file("scripts/game.lua");
@@ -57,6 +58,7 @@ int main()
 	console->print("MakeIt Game Engine\n\nCopyright (C) 2019 Pete Goodwin\n\n");
 
 	auto root = Scene::get_root();
+	auto physics = Physics::get_physics();
 
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
@@ -142,6 +144,12 @@ int main()
 			ImGui::TreePop();
 		}
 		ImGui::End();
+
+		if (physics)
+			physics->step();
+
+		if (root)
+			root->update(physics);
 
 		LuaScript::execute_function("game_run", delta.asSeconds());
 
