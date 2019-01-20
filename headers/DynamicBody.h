@@ -8,5 +8,7 @@ namespace MakeIt
 	{
 	public:
 		DynamicBody();
+
+		static void register_class(lua_State *state);
 	};
 }

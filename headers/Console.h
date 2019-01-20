@@ -6,6 +6,8 @@
 #include <imgui.h>
 
 #include <lua.hpp>
+#include <LuaBridge.h>
+#include <RefCountedPtr.h>
 
 #include "Priority.h"
 

@@ -342,19 +342,22 @@
     <ClCompile Include="src\Physics.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\Source.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="src\Texture.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\PhysicsBody.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\StaticBody.cpp">
-      <Filter>headers</Filter>
-    </ClCompile>
     <ClCompile Include="src\DynamicBody.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StaticBody.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BodyShape.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KinematicBody.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -618,6 +621,12 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\DynamicBody.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\BodyShape.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\KinematicBody.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

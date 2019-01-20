@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Lua.hpp>
-
 #include "Node.h"
 
 namespace MakeIt

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <lua.hpp>
+#include <LuaBridge.h>
+#include <RefCountedPtr.h>
 
 #include <SFML/Graphics.hpp>
 

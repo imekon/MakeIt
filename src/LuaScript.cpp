@@ -1,14 +1,16 @@
 #include <Box2d.h>
 
-#include <lua.hpp>
-#include <LuaBridge.h>
-
 #include "Console.h"
 #include "TextureManager.h"
 #include "Vector2.h"
 #include "Sprite.h"
 #include "Scene.h"
 #include "Physics.h"
+#include "BodyShape.h"
+#include "PhysicsBody.h"
+#include "StaticBody.h"
+#include "KinematicBody.h"
+#include "DynamicBody.h"
 #include "LuaScript.h"
 
 const int NODE_STORE_MAGIC = 0x4c456761;
@@ -144,6 +146,11 @@ void LuaScript::register_classes(lua_State *state)
 	Sprite::register_class(state);
 	Scene::register_class(state);
 	Physics::register_class(state);
+	BodyShape::register_class(state);
+	PhysicsBody::register_class(state);
+	StaticBody::register_class(state);
+	KinematicBody::register_class(state);
+	DynamicBody::register_class(state);
 	Console::register_class(state);
 }
 

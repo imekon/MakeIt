@@ -1,8 +1,5 @@
 #include "Scene.h"
 
-#include <LuaBridge.h>
-#include <RefCountedPtr.h>
-
 using namespace luabridge;
 using namespace MakeIt;
 

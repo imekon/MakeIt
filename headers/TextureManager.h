@@ -2,6 +2,7 @@
 
 #include <lua.hpp>
 #include <LuaBridge.h>
+#include <RefCountedPtr.h>
 
 #include <vector>
 #include <SFML/Graphics.hpp>

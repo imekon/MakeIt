@@ -1,6 +1,8 @@
 #pragma once
 
 #include <lua.hpp>
+#include <LuaBridge.h>
+#include <RefCountedPtr.h>
 
 namespace MakeIt
 {
@@ -18,7 +20,5 @@ namespace MakeIt
 
 	private:
 		float _x, _y;
-
-		static Vector2 *create(float x, float y);
 	};
 }

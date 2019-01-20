@@ -30,6 +30,12 @@ function game_startup()
 	s2.name = "ball"
 	n:add_child(s2)
 
+	s3 = Sprite()
+	s3:set_texture(crate)
+	s3.position = Vector2(100, 200)
+	s3.name = "physics crate"
+	n:add_child(s3)
+
 	-- n.position = Vector2(300, 300)
 
 	root:add_child(n)

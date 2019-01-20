@@ -1,9 +1,5 @@
 #include <algorithm>
 
-#include <lua.hpp>
-#include <LuaBridge.h>
-#include <RefCountedPtr.h>
-
 #include "LuaScript.h"
 #include "TextureManager.h"
 #include "Sprite.h"

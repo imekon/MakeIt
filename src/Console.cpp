@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#include <lua.hpp>
-#include <LuaBridge.h>
-
 #include "Console.h"
 
 using namespace luabridge;

@@ -1,7 +1,3 @@
-#include <lua.hpp>
-#include <LuaBridge.h>
-#include <RefCountedPtr.h>
-
 #include "Vector2.h"
 #include "LuaScript.h"
 

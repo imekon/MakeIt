@@ -4,10 +4,10 @@
 
 namespace MakeIt
 {
-	class StaticBody : public PhysicsBody
+	class KinematicBody : public PhysicsBody
 	{
 	public:
-		StaticBody();
+		KinematicBody();
 
 		static void register_class(lua_State *state);
 	};

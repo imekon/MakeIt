@@ -3,9 +3,6 @@
 #include "Node.h"
 #include "Physics.h"
 
-#include <LuaBridge.h>
-#include <RefCountedPtr.h>
-
 using namespace std;
 using namespace luabridge;
 using namespace MakeIt;

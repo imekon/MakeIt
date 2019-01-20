@@ -105,6 +105,7 @@
     <ClCompile Include="LUA\lzio.c" />
     <ClCompile Include="src\Console.cpp" />
     <ClCompile Include="src\DynamicBody.cpp" />
+    <ClCompile Include="src\KinematicBody.cpp" />
     <ClCompile Include="src\LuaScript.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Node.cpp" />
@@ -113,7 +114,7 @@
     <ClCompile Include="src\Physics.cpp" />
     <ClCompile Include="src\PhysicsBody.cpp" />
     <ClCompile Include="src\Scene.cpp" />
-    <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\BodyShape.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\StaticBody.cpp" />
     <ClCompile Include="src\Texture.cpp" />
@@ -168,8 +169,10 @@
     <ClInclude Include="box2d\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="box2d\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="box2d\Rope\b2Rope.h" />
+    <ClInclude Include="headers\BodyShape.h" />
     <ClInclude Include="headers\Console.h" />
     <ClInclude Include="headers\DynamicBody.h" />
+    <ClInclude Include="headers\KinematicBody.h" />
     <ClInclude Include="headers\LuaScript.h" />
     <ClInclude Include="headers\Node.h" />
     <ClInclude Include="headers\Node2D.h" />
