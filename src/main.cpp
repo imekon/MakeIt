@@ -124,6 +124,8 @@ int main()
 				LuaScript::process(buffer);
 				buffer[0] = 0;
 				reclaim_focus = true;
+
+				console->add_command(buffer);
 			}
 
 			ImGui::SetItemDefaultFocus();

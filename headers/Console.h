@@ -23,6 +23,7 @@ class Console
 public:
 	Console();
 
+	void add_command(const char *command);
 	void set_priority(PRIORITY prio) { _priority = prio; }
 	void print(const char *format, ...);
 	bool print_error(const char *message);
@@ -46,11 +47,11 @@ public:
 private:
 	bool scroll_to_bottom;
 	PRIORITY _priority;
+	std::vector<std::string> _commands;
+
 	std::vector<ConsoleContent> content;
-
-	static Console *console;
-
 	ImVec4 get_priority_colour(PRIORITY priority);
 
+	static Console *console;
 	static void lua_print(const char *message);
 };

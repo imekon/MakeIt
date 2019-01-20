@@ -12,6 +12,11 @@ Console::Console() : scroll_to_bottom(false), _priority(PRIORITY::LOW)
 
 }
 
+void Console::add_command(const char *command)
+{
+	_commands.push_back(command);
+}
+
 void Console::print(const char *format, ...)
 {
 	if (format == nullptr)

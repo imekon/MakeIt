@@ -1,4 +1,4 @@
-configuration = { width = 1280, height = 800, title = "This is MakeIt sample" }
+configuration = { width = 1280, height = 768, title = "This is MakeIt sample" }
 
 function game_startup()
 	crate = Texture()
