@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -25,7 +27,7 @@ void Console::print(const char *format, ...)
 	va_list args;
 	va_start(args, format);
 	char buffer[1024];
-	vsprintf_s(buffer, format, args);
+	vsprintf(buffer, format, args);
 
 	auto index = 0;
 	char chunk[1024];
