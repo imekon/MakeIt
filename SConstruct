@@ -1,3 +1,5 @@
+EnsureSConsVersion(3, 0, 4)
+
 makeit_sources = Glob('src/*.cpp')
 
 excluded_lua = ['LUA/lua.c', 'LUA/luac.c']
