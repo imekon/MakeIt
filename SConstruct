@@ -16,6 +16,8 @@ box2d_headers = ['.', 'Box2D']
 
 # cppflags = '-std=c++11'
 cppflags = '-D_DEBUG'
+libpath = ['SFML\lib']
+libs = ['sfml-graphics-d.lib', 'sfml-system-d.lib', 'sfml-window-d.lib', 'sfml-main-d.lib']
 
-env = Environment(CPPPATH = general_headers + box2d_headers + luabridge_headers, CPPFLAGS = cppflags)
+env = Environment(CPPPATH = general_headers + box2d_headers + luabridge_headers, CPPFLAGS = cppflags, LIBS = libs, LIBPATH = libpath)
 env.Program('MakeIt', makeit_sources + lua_sources + box2d_sources + imgui_sources)
