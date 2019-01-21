@@ -60,6 +60,9 @@ int main()
 	auto root = Scene::get_root();
 	auto physics = Physics::get_physics();
 
+	float fps = 0.0f;
+	float now = 0.0f;
+
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
 	{
@@ -82,7 +85,12 @@ int main()
 		}
 
 		auto delta = deltaClock.restart();
-		auto fps = 1.0f / delta.asSeconds();
+		now += delta.asSeconds();
+		if (now > 0.1f)
+		{
+			fps = 1.0f / delta.asSeconds();
+			now = 0.0f;
+		}
 		ImGui::SFML::Update(window, delta);
 
 		if (showConsole)
