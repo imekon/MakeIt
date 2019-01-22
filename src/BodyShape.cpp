@@ -8,7 +8,7 @@ BodyShape::BodyShape()
 
 }
 
-void BodyShape::createShapeAndFixture(b2Body *body)
+void BodyShape::create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture)
 {
 
 }

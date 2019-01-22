@@ -20,5 +20,7 @@ namespace MakeIt
 	protected:
 		b2BodyType _body_type;
 		b2Body *body;
+
+		virtual b2FixtureDef *get_fixture();
 	};
 }

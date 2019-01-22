@@ -360,6 +360,12 @@
     <ClCompile Include="src\KinematicBody.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\BoxBody.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CircleBody.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -627,6 +633,12 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\KinematicBody.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\BoxBody.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\CircleBody.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,8 +11,9 @@ namespace MakeIt
 		Node2D();
 		virtual ~Node2D();
 
-		virtual void set_position(MakeIt::Vector2 vector);
-		virtual void set_global_position(MakeIt::Vector2 vector);
+		virtual void set_position(Vector2 vector);
+		void set_position(float x, float y) { set_position(Vector2(x, y)); }
+		virtual void set_global_position(Vector2 vector);
 		virtual void set_scale(MakeIt::Vector2 vector);
 		virtual void set_rotate(float angle);
 

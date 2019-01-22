@@ -13,7 +13,7 @@ namespace MakeIt
 	public:
 		BodyShape();
 
-		void createShapeAndFixture(b2Body *body);
+		virtual void create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture);
 
 		static void register_class(lua_State *state);
 	};
