@@ -10,5 +10,10 @@ namespace MakeIt
 		DynamicBody();
 
 		static void register_class(lua_State *state);
+
+	protected:
+		b2FixtureDef fixture;
+
+		b2FixtureDef *get_fixture() override;
 	};
 }

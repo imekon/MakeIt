@@ -15,8 +15,6 @@ void CircleBody::create_shape_and_fixture(b2Body * body, b2FixtureDef *fixture)
 	if (fixture)
 	{
 		fixture->shape = &shape;
-		fixture->density = 1.0f;
-		fixture->friction = 0.0f;
 		body->CreateFixture(fixture);
 	}
 	else

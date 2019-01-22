@@ -16,3 +16,11 @@ void DynamicBody::register_class(lua_State *state)
 		.addConstructor<void(*) (void), RefCountedPtr<DynamicBody>>()
 		.endClass();
 }
+
+b2FixtureDef * MakeIt::DynamicBody::get_fixture()
+{
+	fixture.density = 1.0f;
+	fixture.friction = 0.0f;
+
+	return &fixture;
+}
