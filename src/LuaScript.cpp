@@ -7,6 +7,8 @@
 #include "Scene.h"
 #include "Physics.h"
 #include "BodyShape.h"
+#include "BoxShape.h"
+#include "CircleShape.h"
 #include "PhysicsBody.h"
 #include "StaticBody.h"
 #include "KinematicBody.h"
@@ -147,6 +149,8 @@ void LuaScript::register_classes(lua_State *state)
 	Scene::register_class(state);
 	Physics::register_class(state);
 	BodyShape::register_class(state);
+	BoxShape::register_class(state);
+	CircleShape::register_class(state);
 	PhysicsBody::register_class(state);
 	StaticBody::register_class(state);
 	KinematicBody::register_class(state);

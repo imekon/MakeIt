@@ -360,10 +360,10 @@
     <ClCompile Include="src\KinematicBody.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\BoxBody.cpp">
+    <ClCompile Include="src\BoxShape.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\CircleBody.cpp">
+    <ClCompile Include="src\CircleShape.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -635,10 +635,10 @@
     <ClInclude Include="headers\KinematicBody.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="headers\BoxBody.h">
+    <ClInclude Include="headers\BoxShape.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="headers\CircleBody.h">
+    <ClInclude Include="headers\CircleShape.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

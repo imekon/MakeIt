@@ -103,8 +103,8 @@
     <ClCompile Include="LUA\lutf8lib.c" />
     <ClCompile Include="LUA\lvm.c" />
     <ClCompile Include="LUA\lzio.c" />
-    <ClCompile Include="src\BoxBody.cpp" />
-    <ClCompile Include="src\CircleBody.cpp" />
+    <ClCompile Include="src\BoxShape.cpp" />
+    <ClCompile Include="src\CircleShape.cpp" />
     <ClCompile Include="src\Console.cpp" />
     <ClCompile Include="src\DynamicBody.cpp" />
     <ClCompile Include="src\KinematicBody.cpp" />
@@ -172,8 +172,8 @@
     <ClInclude Include="box2d\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="box2d\Rope\b2Rope.h" />
     <ClInclude Include="headers\BodyShape.h" />
-    <ClInclude Include="headers\BoxBody.h" />
-    <ClInclude Include="headers\CircleBody.h" />
+    <ClInclude Include="headers\BoxShape.h" />
+    <ClInclude Include="headers\CircleShape.h" />
     <ClInclude Include="headers\Console.h" />
     <ClInclude Include="headers\DynamicBody.h" />
     <ClInclude Include="headers\KinematicBody.h" />

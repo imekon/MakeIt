@@ -30,13 +30,16 @@ function game_startup()
 	s2.name = "ball"
 	n:add_child(s2)
 
-	s3 = Sprite()
-	s3:set_texture(crate)
-	s3.position = Vector2(100, 200)
-	s3.name = "physics crate"
-	n:add_child(s3)
+	p = DynamicBody()
+	shape = BoxShape(16.0, 16.0)
+	p.set_shape(physics, shape)
+	p.position = Vector2(100, 100)
+	-- n.add_child(p)
 
-	-- n.position = Vector2(300, 300)
+	-- s3 = Sprite()
+	-- s3:set_texture(crate)
+	-- s3.name = "physics crate"
+	-- p:add_child(s3)
 
 	root:add_child(n)
 	root:sort()
