@@ -32,14 +32,14 @@ function game_startup()
 
 	p = DynamicBody()
 	shape = BoxShape(16.0, 16.0)
-	p.set_shape(physics, shape)
+	p:set_shape(physics, shape)
 	p.position = Vector2(100, 100)
-	-- n.add_child(p)
+	n:add_child(p)
 
-	-- s3 = Sprite()
-	-- s3:set_texture(crate)
-	-- s3.name = "physics crate"
-	-- p:add_child(s3)
+	s3 = Sprite()
+	s3:set_texture(crate)
+	s3.name = "physics crate"
+	p:add_child(s3)
 
 	root:add_child(n)
 	root:sort()
@@ -49,11 +49,11 @@ function game_startup()
 end
 
 function game_run(delta)
-	x = x + rate / delta
-	if x > 1180 then
-		x = 100
-	end
-	s1.position = Vector2(x, 100)
+	-- x = x + rate / delta
+	-- if x > 1180 then
+	--	x = 100
+	-- end
+	-- s1.position = Vector2(x, 100)
 end
 
 function game_shutdown()

@@ -6,7 +6,7 @@ using namespace MakeIt;
 Physics *Physics::_physics = nullptr;
 
 Physics::Physics(float gravityFactor, float scaling)
-	: gravity(0.0f, gravityFactor), world(gravity), scaling(scaling), enabled(false)
+	: gravity(0.0f, gravityFactor), world(gravity), scaling(scaling), enabled(true)
 {
 
 }

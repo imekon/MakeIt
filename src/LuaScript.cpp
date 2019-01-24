@@ -1,3 +1,4 @@
+#include <sstream>
 #include <Box2d.h>
 
 #include "Console.h"
@@ -17,6 +18,7 @@
 
 const int NODE_STORE_MAGIC = 0x4c456761;
 
+using namespace std;
 using namespace luabridge;
 using namespace MakeIt;
 
@@ -104,9 +106,17 @@ bool LuaScript::process_configuration(int &width, int &height, char *title, int 
 	return true;
 }
 
-bool LuaScript::execute(int args)
+bool LuaScript::execute(const char *function, int args)
 {
-	lua_pcall(state, args, 0, 0);
+	if (lua_pcall(state, args, 0, 0))
+	{
+		stringstream s;
+		s << "ERROR: execute " << function << " " << lua_tostring(state, -1) << endl;
+		console->print_error(s.str().c_str());
+
+		running = false;
+	}
+
 	return true;
 }
 
@@ -116,7 +126,7 @@ bool LuaScript::execute_function(const char *function_name)
 		return false;
 
 	lua_getglobal(state, function_name);
-	return execute(0);
+	return execute(function_name, 0);
 }
 
 bool LuaScript::execute_function(const char * function_name, float arg1)
@@ -127,7 +137,7 @@ bool LuaScript::execute_function(const char * function_name, float arg1)
 	lua_getglobal(state, function_name);
 	lua_pushnumber(state, arg1);
 
-	return execute(1);
+	return execute(function_name, 1);
 }
 
 void LuaScript::register_class(lua_State *state)

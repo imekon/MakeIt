@@ -49,5 +49,5 @@ private:
 	static void register_class(lua_State *state);
 	static void register_classes(lua_State *state);
 	static void versions();
-	static bool execute(int args);
+	static bool execute(const char *function, int args);
 };
