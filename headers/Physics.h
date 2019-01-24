@@ -6,16 +6,22 @@
 
 namespace MakeIt
 {
+	class PhysicsDebug;
+
 	class Physics : public Node
 	{
 	public:
 		Physics(float gravityFactor, float scaling);
 
 		bool get_enabled() const { return enabled; }
+		bool get_debug() const { return debug; }
 		float get_scaling() const { return scaling; }
 
 		void set_enabled(bool value) { enabled = value; }
+		void set_debug(bool value) { debug = value; }
 		void set_scaling(float value);
+
+		void set_debug_draw(PhysicsDebug *debug_draw);
 
 		void step();
 		b2World *getWorld() { return &world; }
@@ -27,6 +33,7 @@ namespace MakeIt
 
 	private:
 		bool enabled;
+		bool debug;
 		float scaling;
 		b2Vec2 gravity;
 		b2World world;

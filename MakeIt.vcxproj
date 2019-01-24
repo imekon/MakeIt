@@ -115,6 +115,7 @@
     <ClCompile Include="src\Node3D.cpp" />
     <ClCompile Include="src\Physics.cpp" />
     <ClCompile Include="src\PhysicsBody.cpp" />
+    <ClCompile Include="src\PhysicsDebug.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\BodyShape.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="headers\Node3D.h" />
     <ClInclude Include="headers\Physics.h" />
     <ClInclude Include="headers\PhysicsBody.h" />
+    <ClInclude Include="headers\PhysicsDebug.h" />
     <ClInclude Include="headers\Priority.h" />
     <ClInclude Include="headers\Scene.h" />
     <ClInclude Include="headers\Sprite.h" />

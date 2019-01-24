@@ -11,6 +11,7 @@
 #include "Sprite.h"
 #include "Scene.h"
 #include "Physics.h"
+#include "PhysicsDebug.h"
 
 using namespace MakeIt;
 
@@ -59,6 +60,14 @@ int main()
 
 	auto root = Scene::get_root();
 	auto physics = Physics::get_physics();
+	
+	PhysicsDebug *physics_debug = nullptr;
+
+	if (physics && physics->get_debug())
+	{
+		physics_debug = new PhysicsDebug();
+		physics->set_debug_draw(physics_debug);
+	}
 
 	float fps = 0.0f;
 	float now = 0.0f;
@@ -166,6 +175,10 @@ int main()
 		window.clear();
 		if (root)
 			root->draw(&window);
+
+		if (physics && physics->get_debug() && physics_debug)
+			physics_debug->draw(&window);
+
 		ImGui::SFML::Render(window);
 		window.display();
 	}

@@ -366,6 +366,9 @@
     <ClCompile Include="src\CircleShape.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\PhysicsDebug.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -639,6 +642,9 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\CircleShape.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\PhysicsDebug.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

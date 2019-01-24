@@ -6,7 +6,7 @@ using namespace MakeIt;
 Physics *Physics::_physics = nullptr;
 
 Physics::Physics(float gravityFactor, float scaling)
-	: gravity(0.0f, gravityFactor), world(gravity), scaling(scaling), enabled(true)
+	: gravity(0.0f, gravityFactor), world(gravity), scaling(scaling), enabled(true), debug(false)
 {
 
 }
@@ -14,6 +14,11 @@ Physics::Physics(float gravityFactor, float scaling)
 void Physics::set_scaling(float value)
 {
 	scaling = value;
+}
+
+void Physics::set_debug_draw(PhysicsDebug * debug_draw)
+{
+	world.SetDebugDraw((b2Draw *)debug_draw);
 }
 
 void Physics::step()
@@ -33,6 +38,7 @@ void Physics::register_class(lua_State * state)
 	getGlobalNamespace(state).deriveClass<Physics, Node>("Physics")
 		.addConstructor<void(*) (float, float), RefCountedPtr<Physics>>()
 		.addProperty("enabled", &Physics::get_enabled, &Physics::set_enabled)
+		.addProperty("debug", &Physics::get_debug, &Physics::set_debug)
 		.addProperty("scaling", &Physics::get_scaling, &Physics::set_scaling)
 		.addStaticFunction("get_physics", get_physics)
 		.addStaticFunction("set_physics", set_physics)

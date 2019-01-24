@@ -9,6 +9,7 @@ function game_startup()
 
 	physics = Physics(10.0, 30.0)
 	Physics.set_physics(physics)
+	physics.debug = true
 
 	root = Scene()
 	Scene.set_root(root)
