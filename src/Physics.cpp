@@ -8,7 +8,7 @@ Physics *Physics::_physics = nullptr;
 Physics::Physics(float gravityFactor, float scaling)
 	: gravity(0.0f, gravityFactor), world(gravity), scaling(scaling), enabled(true), debug(false)
 {
-
+	_physics = this;
 }
 
 void Physics::set_scaling(float value)
@@ -40,8 +40,6 @@ void Physics::register_class(lua_State * state)
 		.addProperty("enabled", &Physics::get_enabled, &Physics::set_enabled)
 		.addProperty("debug", &Physics::get_debug, &Physics::set_debug)
 		.addProperty("scaling", &Physics::get_scaling, &Physics::set_scaling)
-		.addStaticFunction("get_physics", get_physics)
-		.addStaticFunction("set_physics", set_physics)
 		.endClass();
 }
 

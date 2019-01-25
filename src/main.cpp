@@ -167,7 +167,7 @@ int main()
 		if (physics)
 			physics->step();
 
-		if (root)
+		if (root && physics)
 			root->update(physics);
 
 		LuaScript::execute_function("game_run", delta.asSeconds());
@@ -176,7 +176,7 @@ int main()
 		if (root)
 			root->draw(&window);
 
-		if (physics && physics->get_debug() && physics_debug)
+		if (physics_debug)
 			physics_debug->draw(&window);
 
 		ImGui::SFML::Render(window);

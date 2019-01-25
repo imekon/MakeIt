@@ -12,7 +12,8 @@ namespace MakeIt
 	public:
 		PhysicsBody();
 
-		virtual void set_shape(Physics *physics, BodyShape *shape);
+		virtual void set_shape(BodyShape *shape);
+		void set_position(Vector2 vector) override;
 		void update(Physics *physics) override;
 
 		static void register_class(lua_State *state);
@@ -22,5 +23,6 @@ namespace MakeIt
 		b2Body *body;
 
 		virtual b2FixtureDef *get_fixture();
+		void set_physics_position(float x, float y, bool update_physics) override;
 	};
 }

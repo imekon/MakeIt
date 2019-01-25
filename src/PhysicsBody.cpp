@@ -3,6 +3,8 @@
 
 #include <Box2D.h>
 
+//#include <spdlog/spdlog.h>
+
 #include "Physics.h"
 #include "BodyShape.h"
 #include "PhysicsBody.h"
@@ -17,8 +19,13 @@ PhysicsBody::PhysicsBody()
 
 }
 
-void PhysicsBody::set_shape(Physics *physics, BodyShape *shape)
+void PhysicsBody::set_shape(BodyShape *shape)
 {
+	auto physics = Physics::get_physics();
+
+	if (physics == nullptr)
+		return;
+
 	auto x = _position.get_x() / physics->get_scaling();
 	auto y = _position.get_y() / physics->get_scaling();
 
@@ -30,12 +37,32 @@ void PhysicsBody::set_shape(Physics *physics, BodyShape *shape)
 	shape->create_shape_and_fixture(body, get_fixture());
 }
 
+void PhysicsBody::set_position(Vector2 vector)
+{
+	Node2D::set_position(vector);
+	set_physics_position(vector.get_x(), vector.get_y(), true);
+}
+
+void PhysicsBody::set_physics_position(float x, float y, bool update_physics)
+{
+	//spdlog::get("logger")->info("set physics position {:1.2f} {:1.2f}", x, y);
+
+	Node2D::set_physics_position(x, y, update_physics);
+	if (update_physics)
+	{
+		auto physics = Physics::get_physics();
+		if (physics)
+			body->SetTransform(b2Vec2(x / physics->get_scaling(), y / physics->get_scaling()), _rotate);
+	}
+}
+
 void PhysicsBody::update(Physics *physics)
 {
 	Node2D::update(physics);
 
 	auto pos = body->GetPosition();
-	set_position(pos.x * physics->get_scaling(), pos.y * physics->get_scaling());
+	//set_physics_position(pos.x * physics->get_scaling(), pos.y * physics->get_scaling(), false);
+	Node2D::set_position(Vector2(pos.x * physics->get_scaling(), pos.y * physics->get_scaling()));
 	auto angle = body->GetAngle();
 	set_rotate(R2D(angle));
 }

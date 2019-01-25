@@ -1,7 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include <stdarg.h>
+//#include <spdlog/sinks/basic_file_sink.h>
 
 #include "Console.h"
 
@@ -11,7 +10,7 @@ Console *Console::console = nullptr;
 
 Console::Console() : scroll_to_bottom(false), _priority(PRIORITY::LOW)
 {
-
+	//auto logger = spdlog::basic_logger_mt("logger", "logs/logger.log");
 }
 
 void Console::add_command(const char *command)
@@ -28,6 +27,8 @@ void Console::print(const char *format, ...)
 	va_start(args, format);
 	char buffer[1024];
 	vsprintf(buffer, format, args);
+
+	//spdlog::get("logger")->info(buffer);
 
 	auto index = 0;
 	char chunk[1024];

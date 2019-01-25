@@ -29,7 +29,6 @@ namespace MakeIt
 		static void register_class(lua_State *state);
 
 		static Physics *get_physics() { return _physics; }
-		static void set_physics(Physics *physics) { _physics = physics; }
 
 	private:
 		bool enabled;

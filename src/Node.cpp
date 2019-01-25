@@ -25,7 +25,8 @@ Node::~Node()
 
 void Node::add_child(Node * child)
 {
-	_children.push_back(child);
+	if (child)
+		_children.push_back(child);
 }
 
 void Node::remove_child(Node * child)
@@ -39,14 +40,16 @@ void Node::draw(sf::RenderWindow * window)
 {
 	if (_visible)
 		for (auto child : _children)
-			child->draw(window);
+			if (child)
+				child->draw(window);
 }
 
 void Node::update(Physics *physics)
 {
 	for (auto child : _children)
 	{
-		child->update(physics);
+		if (child)
+			child->update(physics);
 	}
 }
 

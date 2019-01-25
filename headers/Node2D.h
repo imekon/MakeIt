@@ -12,7 +12,7 @@ namespace MakeIt
 		virtual ~Node2D();
 
 		virtual void set_position(Vector2 vector);
-		void set_position(float x, float y) { set_position(Vector2(x, y)); }
+		virtual void set_position(float x, float y) { set_position(Vector2(x, y)); }
 		virtual void set_global_position(Vector2 vector);
 		virtual void set_scale(MakeIt::Vector2 vector);
 		virtual void set_rotate(float angle);
@@ -29,5 +29,7 @@ namespace MakeIt
 		Vector2 _global_position;
 		Vector2 _scale;
 		float _rotate;
+
+		virtual void set_physics_position(float x, float y, bool update_physics);
 	};
 }

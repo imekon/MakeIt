@@ -8,41 +8,48 @@ function game_startup()
 	ball:load("textures/ball.png")
 
 	physics = Physics(10.0, 30.0)
-	Physics.set_physics(physics)
-	physics.debug = true
+	-- physics.debug = true
 
 	root = Scene()
 	Scene.set_root(root)
 
-	n = Node2D()
-	n.name = "node"
+	node = Node2D()
+	node.name = "node"
 
 	s1 = Sprite()
 	s1:set_texture(crate)
 	s1.z = 10
 	s1.position = Vector2(100, 100)
 	s1.name = "crate"
-	n:add_child(s1)
+	node:add_child(s1)
 
 	s2 = Sprite()
 	s2:set_texture(ball)
 	s2.z = -10
 	s2.position = Vector2(200, 100)
 	s2.name = "ball"
-	n:add_child(s2)
+	node:add_child(s2)
 
-	p = DynamicBody()
-	shape = BoxShape(16.0, 16.0)
-	p:set_shape(physics, shape)
-	p.position = Vector2(100, 100)
-	n:add_child(p)
+	for i = 1,3 do
+		p = DynamicBody()
+		shape = BoxShape(16.0, 16.0)
+		p:set_shape(shape)
+		p.position = Vector2(300 + i * 100, 100)
+		node:add_child(p)
 
-	s3 = Sprite()
-	s3:set_texture(crate)
-	s3.name = "physics crate"
-	p:add_child(s3)
+		s = Sprite()
+		s:set_texture(crate)
+		p:add_child(s)
+	end
 
-	root:add_child(n)
+	-- floor = StaticBody()
+	-- floor.name = "physics floor"
+	-- shape2 = BoxShape(1280, 10)
+	-- floor:set_shape(shape2)
+	-- floor.position = Vector2(0, 600)
+	-- node:add_child(floor)
+
+	root:add_child(node)
 	root:sort()
 
 	x = 100
