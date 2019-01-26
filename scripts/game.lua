@@ -31,13 +31,13 @@ function game_startup()
 	node:add_child(s2)
 
 	for i = 1,3 do
-		p = DynamicBody()
-		shape = BoxShape(16.0, 16.0)
+		local p = DynamicBody()
+		p.position = Vector2(300 + i * 64, 100)
+		local shape = BoxShape(16.0, 16.0)
 		p:set_shape(shape)
-		p.position = Vector2(300 + i * 100, 100)
 		node:add_child(p)
 
-		s = Sprite()
+		local s = Sprite()
 		s:set_texture(crate)
 		p:add_child(s)
 	end

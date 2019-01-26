@@ -51,7 +51,7 @@ void PhysicsBody::set_physics_position(float x, float y, bool update_physics)
 	if (update_physics)
 	{
 		auto physics = Physics::get_physics();
-		if (physics)
+		if (physics && body)
 			body->SetTransform(b2Vec2(x / physics->get_scaling(), y / physics->get_scaling()), _rotate);
 	}
 }
