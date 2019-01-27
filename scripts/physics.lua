@@ -47,9 +47,9 @@ function setup_physics()
 end
 
 function create_crates()
-	for i = 1,3 do
+	for i = 1,8 do
 		local p = DynamicBody()
-		local shape = BoxShape(32.0, 32.0)
+		local shape = BoxShape(64, 64)
 		p:set_shape(shape)
 		p.position = Vector2(300 + i * 64, 100)
 		node:add_child(p)
