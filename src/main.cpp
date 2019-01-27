@@ -55,6 +55,7 @@ int main()
 	buffer[0] = 0;
 
 	auto showConsole = true;
+	auto showDemoWindow = false;
 
 	console->print("MakeIt Game Engine\n\nCopyright (C) 2019 Pete Goodwin\n\n");
 
@@ -150,7 +151,8 @@ int main()
 				ImGui::SetKeyboardFocusHere(-1); // Auto focus previous widget
 
 			ImGui::End();
-			ImGui::ShowDemoWindow();
+			if (showDemoWindow)
+				ImGui::ShowDemoWindow(&showDemoWindow);
 		}
 
 		ImGui::SetNextWindowSize(ImVec2(400, 300), ImGuiCond_FirstUseEver);

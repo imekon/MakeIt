@@ -18,10 +18,13 @@ struct ConsoleContent
 	std::string text;
 };
 
+class Logger;
+
 class Console
 {
 public:
 	Console();
+	~Console();
 
 	void add_command(const char *command);
 	void set_priority(PRIORITY prio) { _priority = prio; }
@@ -45,6 +48,7 @@ public:
 	static void register_class(lua_State *state);
 
 private:
+	Logger *logger;
 	bool scroll_to_bottom;
 	PRIORITY _priority;
 	std::vector<std::string> _commands;

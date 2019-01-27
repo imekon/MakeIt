@@ -369,6 +369,9 @@
     <ClCompile Include="src\PhysicsDebug.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Logger.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -647,9 +650,15 @@
     <ClInclude Include="headers\PhysicsDebug.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Logger.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\game.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\physics.lua">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>
@@ -688,6 +697,9 @@
       <Filter>textures</Filter>
     </Image>
     <Image Include="textures\yellowBlock.png">
+      <Filter>textures</Filter>
+    </Image>
+    <Image Include="textures\floor.png">
       <Filter>textures</Filter>
     </Image>
   </ItemGroup>

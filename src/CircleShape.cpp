@@ -1,3 +1,4 @@
+#include "Physics.h"
 #include "CircleShape.h"
 
 using namespace luabridge;
@@ -9,8 +10,10 @@ CircleShape::CircleShape(float radius) : _radius(radius)
 
 void CircleShape::create_shape_and_fixture(b2Body * body, b2FixtureDef *fixture)
 {
+	auto physics = Physics::get_physics();
+
 	b2CircleShape shape;
-	shape.m_radius = _radius;
+	shape.m_radius = _radius / physics->get_scaling();
 
 	if (fixture)
 	{

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
-//#include <spdlog/sinks/basic_file_sink.h>
 
+#include "Logger.h"
 #include "Console.h"
 
 using namespace luabridge;
@@ -10,7 +10,13 @@ Console *Console::console = nullptr;
 
 Console::Console() : scroll_to_bottom(false), _priority(PRIORITY::LOW)
 {
-	//auto logger = spdlog::basic_logger_mt("logger", "logs/logger.log");
+	logger = new Logger("logging.log");
+}
+
+Console::~Console()
+{
+	if (logger)
+		delete logger;
 }
 
 void Console::add_command(const char *command)
@@ -27,8 +33,9 @@ void Console::print(const char *format, ...)
 	va_start(args, format);
 	char buffer[1024];
 	vsprintf(buffer, format, args);
+	va_end(args);
 
-	//spdlog::get("logger")->info(buffer);
+	logger->log(buffer);
 
 	auto index = 0;
 	char chunk[1024];
@@ -64,7 +71,6 @@ void Console::print(const char *format, ...)
 
 	scroll_to_bottom = true;
 
-	va_end(args);
 }
 
 bool Console::print_error(const char *message)

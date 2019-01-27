@@ -49,6 +49,9 @@ void Sprite::set_origin(Vector2 vector)
 
 void Sprite::set_texture(Texture * texture)
 {
+	if (texture == nullptr)
+		return;
+
 	_sprite.setTexture(*texture->get_texture());
 }
 
