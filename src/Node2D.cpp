@@ -31,11 +31,6 @@ void Node2D::set_global_position(Vector2 vector)
 	_global_position = vector;
 }
 
-void Node2D::set_physics_position(float x, float y, bool update_physics)
-{
-	_global_position = Vector2(x, y);
-}
-
 void Node2D::set_scale(MakeIt::Vector2 vector)
 {
 	_scale = vector;

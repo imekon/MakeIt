@@ -19,10 +19,10 @@ namespace MakeIt
 		static void register_class(lua_State *state);
 
 	protected:
+		bool update_physics;
 		b2BodyType _body_type;
 		b2Body *body;
 
 		virtual b2FixtureDef *get_fixture();
-		void set_physics_position(float x, float y, bool update_physics) override;
 	};
 }
