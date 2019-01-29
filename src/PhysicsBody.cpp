@@ -11,6 +11,7 @@
 using namespace luabridge;
 using namespace MakeIt;
 
+#define D2R(angle) (angle) * 2.0f * (float)M_PI / 360.0f
 #define R2D(angle) (angle) * 360.0f / 2.0f / (float)M_PI
 
 PhysicsBody::PhysicsBody() : update_physics(false)
@@ -54,7 +55,7 @@ void PhysicsBody::update(Physics *physics)
 
 		auto physics = Physics::get_physics();
 		if (physics && body)
-			body->SetTransform(b2Vec2(_position.get_x() / physics->get_scaling(), _position.get_y() / physics->get_scaling()), _rotate);
+			body->SetTransform(b2Vec2(_position.get_x() / physics->get_scaling(), _position.get_y() / physics->get_scaling()), D2R(_rotate));
 
 		update_physics = false;
 	}

@@ -46,16 +46,34 @@ function setup_physics()
 	root:sort()
 end
 
+function create_crate(x, y)
+	local p = DynamicBody()
+	local shape = BoxShape(64, 64)
+	p:set_shape(shape)
+	p.position = Vector2(x, y)
+	node:add_child(p)
+
+	local s = Sprite()
+	s:set_texture(crate)
+	p:add_child(s)
+end
+
 function create_crates()
 	for i = 1, 8 do
-		local p = DynamicBody()
-		local shape = BoxShape(64, 64)
-		p:set_shape(shape)
-		p.position = Vector2(300 + i * 66, 100)
-		node:add_child(p)
-
-		local s = Sprite()
-		s:set_texture(crate)
-		p:add_child(s)
+		create_crate(300 + i * 72, 100)
 	end
+
+	create_crate(400, 200)
+end
+
+function create_balls()
+	local p = DynamicBody()
+	local shape = CircleShape(14)
+	p:set_shape(shape)
+	p.position = Vector2(150, 200)
+	node:add_child(p)
+
+	local s = Sprite()
+	s:set_texture(ball)
+	p:add_child(s)
 end
