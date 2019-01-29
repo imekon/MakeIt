@@ -24,7 +24,7 @@ namespace MakeIt
 		void set_debug_draw(PhysicsDebug *debug_draw);
 
 		void step();
-		b2World *getWorld() { return &world; }
+		b2World *get_world() { return &world; }
 
 		static void register_class(lua_State *state);
 

@@ -31,7 +31,7 @@ void PhysicsBody::set_shape(BodyShape *shape)
 	b2BodyDef body_def;
 	body_def.position.Set(x, y);
 	body_def.type = _body_type;
-	body = physics->getWorld()->CreateBody(&body_def);
+	body = physics->get_world()->CreateBody(&body_def);
 
 	shape->create_shape_and_fixture(body, get_fixture());
 }

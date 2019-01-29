@@ -35,7 +35,7 @@ function setup_physics()
 	floor.name = "physics floor"
 	shape2 = BoxShape(1280, 10)
 	floor:set_shape(shape2)
-	floor.position = Vector2(0, 600)
+	floor.position = Vector2(640, 600)
 
 	floor_sprite = Sprite()
 	floor_sprite:set_texture(floor_texture)
@@ -47,11 +47,11 @@ function setup_physics()
 end
 
 function create_crates()
-	for i = 1,8 do
+	for i = 1, 8 do
 		local p = DynamicBody()
 		local shape = BoxShape(64, 64)
 		p:set_shape(shape)
-		p.position = Vector2(300 + i * 64, 100)
+		p.position = Vector2(300 + i * 66, 100)
 		node:add_child(p)
 
 		local s = Sprite()

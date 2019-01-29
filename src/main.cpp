@@ -179,7 +179,10 @@ int main()
 			root->draw(&window);
 
 		if (physics_debug)
+		{
+			physics->get_world()->DrawDebugData();
 			physics_debug->draw(&window);
+		}
 
 		ImGui::SFML::Render(window);
 		window.display();

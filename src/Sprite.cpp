@@ -52,7 +52,11 @@ void Sprite::set_texture(Texture * texture)
 	if (texture == nullptr)
 		return;
 
+	auto x = texture->get_width() / 2.0f;
+	auto y = texture->get_height() / 2.0f;
+
 	_sprite.setTexture(*texture->get_texture());
+	_sprite.setOrigin(sf::Vector2f(x, y));
 }
 
 void Sprite::draw(sf::RenderWindow *window)

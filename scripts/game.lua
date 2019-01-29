@@ -4,6 +4,7 @@ configuration = { width = 1280, height = 768, title = "This is MakeIt sample" }
 
 function game_startup()
 	setup_physics()
+	create_crates()
 	-- x = 100
 	-- rate = 0.05
 end
