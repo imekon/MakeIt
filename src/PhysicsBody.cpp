@@ -45,6 +45,12 @@ void PhysicsBody::set_position(Vector2 vector)
 	logger->log("PhysicsBody set position %1.2f %1.2f\n", vector.get_x(), vector.get_y());
 }
 
+void PhysicsBody::set_rotate(float angle)
+{
+	update_physics = true;
+	Node2D::set_rotate(angle);
+}
+
 void PhysicsBody::update(Physics *physics)
 {
 	Node2D::update(physics);

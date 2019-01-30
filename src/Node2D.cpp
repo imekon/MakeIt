@@ -39,6 +39,13 @@ void Node2D::set_scale(MakeIt::Vector2 vector)
 void Node2D::set_rotate(float angle)
 {
 	_rotate = angle;
+
+	for (auto child : _children)
+	{
+		auto node2d = dynamic_cast<Node2D *>(child);
+		if (node2d)
+			node2d->set_rotate(angle);
+	}
 }
 
 void Node2D::register_class(lua_State *state)

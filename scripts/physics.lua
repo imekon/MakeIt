@@ -3,7 +3,7 @@ function setup_physics()
 	crate:load("textures/crate.png")
 
 	ball = Texture()
-	ball:load("textures/ball.png")
+	ball:load("textures/ken.png")
 
 	floor_texture = Texture()
 	floor_texture:load("textures/floor.png")
@@ -56,6 +56,22 @@ function create_crate(x, y)
 	local s = Sprite()
 	s:set_texture(crate)
 	p:add_child(s)
+
+	return p
+end
+
+function create_static_crate(x, y)
+	local p = StaticBody()
+	local shape = BoxShape(64, 64)
+	p:set_shape(shape)
+	p.position = Vector2(x, y)
+	node:add_child(p)
+
+	local s = Sprite()
+	s:set_texture(crate)
+	p:add_child(s)
+
+	return p
 end
 
 function create_crates()
@@ -63,7 +79,13 @@ function create_crates()
 		create_crate(300 + i * 72, 100)
 	end
 
-	create_crate(400, 200)
+	local p = create_crate(400, 200)
+	p.rotate = 30
+end
+
+function create_end_stops()
+	create_static_crate(100, 560)
+	create_static_crate(1000, 560)
 end
 
 function create_balls()
