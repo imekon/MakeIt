@@ -13,6 +13,8 @@ namespace MakeIt
 	public:
 		Physics(float gravityFactor, float scaling);
 
+		const char *get_type_name() const override { return "Physics"; }
+
 		bool get_enabled() const { return enabled; }
 		bool get_debug() const { return debug; }
 		float get_scaling() const { return scaling; }

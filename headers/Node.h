@@ -17,6 +17,7 @@ namespace MakeIt
 		virtual ~Node();
 
 		virtual const char * get_name() const { return _name.c_str(); }
+		virtual const char * get_type_name() const { return "Node"; }
 		virtual void set_name(const char *text) { _name = text; }
 		virtual void add_child(Node *child);
 		virtual void remove_child(Node *child);

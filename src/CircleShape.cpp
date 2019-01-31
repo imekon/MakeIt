@@ -13,7 +13,7 @@ void CircleShape::create_shape_and_fixture(b2Body * body, b2FixtureDef *fixture)
 	auto physics = Physics::get_physics();
 
 	b2CircleShape shape;
-	shape.m_radius = _radius / physics->get_scaling() / 2.0f;
+	shape.m_radius = _radius / physics->get_scaling();
 
 	if (fixture)
 	{

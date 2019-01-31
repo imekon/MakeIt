@@ -1,3 +1,5 @@
+#include <string>
+
 #include <imgui.h>
 #include <imgui-SFML.h>
 
@@ -13,13 +15,19 @@
 #include "Physics.h"
 #include "PhysicsDebug.h"
 
+using namespace std;
 using namespace MakeIt;
 
 static void traverse_scene_tree(Node *node)
 {
 	for (auto child : node->get_children())
 	{
-		if (ImGui::TreeNode(child->get_name()))
+		string name;
+		name.append(child->get_name());
+		name.append(": ");
+		name.append(child->get_type_name());
+
+		if (ImGui::TreeNode(name.c_str()))
 		{
 			traverse_scene_tree(child);
 

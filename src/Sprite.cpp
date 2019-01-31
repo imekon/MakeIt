@@ -22,6 +22,13 @@ void Sprite::set_global_position(Vector2 vector)
 	_sprite.setPosition(_global_position.get_x() + _position.get_x(), _global_position.get_y() + _position.get_y());
 }
 
+void MakeIt::Sprite::set_global_scale(Vector2 vector)
+{
+	Node2D::set_global_scale(vector);
+
+	_sprite.setScale(_global_scale.get_x() * _scale.get_x(), _global_scale.get_y() * _scale.get_y());
+}
+
 void Sprite::set_position(MakeIt::Vector2 vector)
 {
 	Node2D::set_position(vector);
@@ -32,11 +39,14 @@ void Sprite::set_position(MakeIt::Vector2 vector)
 void Sprite::set_scale(MakeIt::Vector2 vector)
 {
 	Node2D::set_scale(vector);
-	_sprite.setScale(vector.get_x(), vector.get_y());
+	_sprite.setScale(_global_scale.get_x() * _scale.get_x(), _global_scale.get_y() * _scale.get_y());
 }
 
 void Sprite::set_rotate(float angle)
 {
+	// This need to take into account parent and child rotation, probably through a transform
+	// You can't just add rotation - what about objects rotating about their origin, translated
+	// and rotating about their parent?
 	Node2D::set_rotate(angle);
 	_sprite.setRotation(angle);
 }

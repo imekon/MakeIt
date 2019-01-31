@@ -12,10 +12,13 @@ namespace MakeIt
 		Sprite();
 		virtual ~Sprite();
 
+		const char *get_type_name() const override { return "Sprite"; }
+
 		void set_position(Vector2 vector) override;
-		void set_global_position(Vector2 vector) override;
 		void set_scale(Vector2 vector) override;
 		void set_rotate(float angle) override;
+		void set_global_position(Vector2 vector) override;
+		void set_global_scale(Vector2 vector) override;
 
 		Vector2 get_origin() const { return _origin; }
 		void set_origin(Vector2 vector);

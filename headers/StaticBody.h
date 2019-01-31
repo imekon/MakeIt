@@ -9,6 +9,8 @@ namespace MakeIt
 	public:
 		StaticBody();
 
+		const char *get_type_name() const override { return "Static"; }
+
 		static void register_class(lua_State *state);
 	};
 }

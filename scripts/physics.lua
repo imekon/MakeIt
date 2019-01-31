@@ -48,6 +48,8 @@ end
 
 function create_crate(x, y)
 	local p = DynamicBody()
+	p.friction = 0.3
+	p.restitution = 0.3
 	local shape = BoxShape(64, 64)
 	p:set_shape(shape)
 	p.position = Vector2(x, y)
@@ -90,9 +92,9 @@ end
 
 function create_balls()
 	local p = DynamicBody()
-	local shape = CircleShape(14)
+	local shape = CircleShape(15)
 	p:set_shape(shape)
-	p.position = Vector2(150, 200)
+	p.position = Vector2(145, 200)
 	node:add_child(p)
 
 	local s = Sprite()
