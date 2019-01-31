@@ -1,3 +1,4 @@
+#include "Engine.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -11,7 +12,6 @@ Logger *Logger::instance = nullptr;
 Logger::Logger(const char * filename) : enable(false), filename(filename)
 {
 	instance = this;
-
 }
 
 Logger::~Logger()

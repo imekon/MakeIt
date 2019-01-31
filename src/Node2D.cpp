@@ -1,3 +1,4 @@
+#include "Engine.h"
 #include "LuaScript.h"
 #include "Node2D.h"
 

@@ -1,3 +1,5 @@
+#include "Engine.h"
+
 #include "Scene.h"
 
 using namespace luabridge;

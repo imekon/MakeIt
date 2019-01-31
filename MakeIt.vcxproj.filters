@@ -653,6 +653,9 @@
     <ClInclude Include="headers\Logger.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Engine.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\game.lua">

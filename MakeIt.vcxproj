@@ -178,6 +178,7 @@
     <ClInclude Include="headers\CircleShape.h" />
     <ClInclude Include="headers\Console.h" />
     <ClInclude Include="headers\DynamicBody.h" />
+    <ClInclude Include="headers\Engine.h" />
     <ClInclude Include="headers\KinematicBody.h" />
     <ClInclude Include="headers\Logger.h" />
     <ClInclude Include="headers\LuaScript.h" />

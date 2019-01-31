@@ -15,7 +15,7 @@ function setup_physics()
 	Scene.set_root(root)
 
 	node = Node2D()
-	node.name = "node"
+	node.name = "ROOT"
 
 	s1 = Sprite()
 	s1:set_texture(crate)
@@ -32,10 +32,10 @@ function setup_physics()
 	node:add_child(s2)
 
 	floor = StaticBody()
+	floor.position = Vector2(640, 597)
 	floor.name = "physics floor"
 	shape2 = BoxShape(1280, 10)
 	floor:set_shape(shape2)
-	floor.position = Vector2(640, 600)
 
 	floor_sprite = Sprite()
 	floor_sprite:set_texture(floor_texture)
@@ -59,6 +59,21 @@ function create_crate(x, y)
 	s:set_texture(crate)
 	p:add_child(s)
 
+	return p
+end
+
+function create_ball(x, y)
+	local p = DynamicBody()
+	p.friction = 0.3
+	p.restitution = 0.7
+	local shape = CircleShape(16)
+	p:set_shape(shape)
+	p.position = Vector2(x, y)
+	node:add_child(p)
+
+	local s = Sprite()
+	s:set_texture(ball)
+	p:add_child(s)
 	return p
 end
 
@@ -86,18 +101,20 @@ function create_crates()
 end
 
 function create_end_stops()
+	create_static_crate(100, 560 - 128)
+	create_static_crate(100, 560 - 64)
 	create_static_crate(100, 560)
+	create_static_crate(550, 560)
 	create_static_crate(1000, 560)
+	create_static_crate(1000, 560 - 64)
+	create_static_crate(1000, 560 - 128)
 end
 
 function create_balls()
-	local p = DynamicBody()
-	local shape = CircleShape(15)
-	p:set_shape(shape)
-	p.position = Vector2(145, 200)
-	node:add_child(p)
-
-	local s = Sprite()
-	s:set_texture(ball)
-	p:add_child(s)
+	for i = 1, 10 do
+		local b = create_ball(160 + i * 50, 200)
+		if i == 5 then
+			b.rotate = 30
+		end
+	end
 end

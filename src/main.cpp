@@ -1,3 +1,4 @@
+#include "Engine.h"
 #include <string>
 
 #include <imgui.h>
@@ -204,6 +205,8 @@ int main()
 	TextureManager::shutdown();
 
 	LuaScript::shutdown();
+
+	_CrtDumpMemoryLeaks();
 
 	return 0;
 }

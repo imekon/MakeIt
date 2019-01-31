@@ -1,3 +1,5 @@
+#include "Engine.h"
+
 #include "Vector2.h"
 #include "LuaScript.h"
 

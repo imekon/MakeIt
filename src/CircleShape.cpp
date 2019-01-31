@@ -1,3 +1,4 @@
+#include "Engine.h"
 #include "Physics.h"
 #include "CircleShape.h"
 
@@ -29,5 +30,4 @@ void MakeIt::CircleShape::register_class(lua_State * state)
 	getGlobalNamespace(state).deriveClass<CircleShape, BodyShape>("CircleShape")
 		.addConstructor<void(*) (float), RefCountedPtr<CircleShape>>()
 		.endClass();
-
 }

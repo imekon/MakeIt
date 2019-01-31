@@ -1,3 +1,5 @@
+#include "Engine.h"
+
 #include "LuaScript.h"
 #include "TextureManager.h"
 

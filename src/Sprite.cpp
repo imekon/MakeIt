@@ -1,3 +1,5 @@
+#include "Engine.h"
+
 #include <algorithm>
 
 #include "LuaScript.h"
