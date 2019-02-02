@@ -8,7 +8,12 @@ using namespace MakeIt;
 
 Vector2::Vector2(float x, float y) : _x(x), _y(y)
 {
+	ENGINE_CONSTRUCTOR(this);
+}
 
+Vector2::~Vector2()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void Vector2::register_class(lua_State * state)

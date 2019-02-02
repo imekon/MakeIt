@@ -9,7 +9,12 @@ Scene *Scene::_root = nullptr;
 
 Scene::Scene()
 {
+	ENGINE_CONSTRUCTOR(this);
+}
 
+Scene::~Scene()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void Scene::register_class(lua_State *state)

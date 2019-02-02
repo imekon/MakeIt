@@ -8,6 +8,7 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 
+#include "Logger.h"
 #include "Console.h"
 #include "LuaScript.h"
 #include "TextureManager.h"
@@ -39,7 +40,14 @@ static void traverse_scene_tree(Node *node)
 
 int main()
 {
+#ifdef _DEBUG
+	auto monitor = new MemoryMonitor();
+#endif
+
 	auto console = Console::getInstance();
+	auto logger = Logger::get_instance();
+	logger->set_enable(true);
+
 	auto texture_manager = TextureManager::get_instance();
 
 	LuaScript::initialise(console);

@@ -9,7 +9,14 @@ using namespace MakeIt;
 
 StaticBody::StaticBody()
 {
+	ENGINE_CONSTRUCTOR(this);
+
 	_body_type = b2_staticBody;
+}
+
+StaticBody::~StaticBody()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void StaticBody::register_class(lua_State *state)

@@ -6,7 +6,12 @@ using namespace MakeIt;
 
 BodyShape::BodyShape()
 {
+	ENGINE_CONSTRUCTOR(this);
+}
 
+BodyShape::~BodyShape()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void BodyShape::create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture)

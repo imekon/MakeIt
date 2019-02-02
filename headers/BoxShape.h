@@ -8,6 +8,7 @@ namespace MakeIt
 	{
 	public:
 		BoxShape(float width, float height);
+		virtual ~BoxShape();
 
 		void create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture) override;
 

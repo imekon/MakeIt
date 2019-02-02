@@ -372,6 +372,9 @@
     <ClCompile Include="src\Logger.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">

@@ -7,7 +7,14 @@ using namespace MakeIt;
 
 PhysicsDebug::PhysicsDebug()
 {
+	ENGINE_CONSTRUCTOR(this);
+
 	SetFlags(e_shapeBit);
+}
+
+PhysicsDebug::~PhysicsDebug()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void PhysicsDebug::draw(sf::RenderWindow * window)

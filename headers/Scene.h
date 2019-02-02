@@ -8,6 +8,7 @@ namespace MakeIt
 	{
 	public:
 		Scene();
+		virtual ~Scene();
 
 		const char *get_type_name() const override { return "Scene"; }
 

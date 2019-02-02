@@ -11,6 +11,7 @@ namespace MakeIt
 	{
 	public:
 		PhysicsBody();
+		virtual ~PhysicsBody();
 
 		virtual void set_shape(BodyShape *shape);
 		void set_position(Vector2 vector) override;

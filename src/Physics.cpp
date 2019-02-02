@@ -9,7 +9,14 @@ Physics *Physics::_physics = nullptr;
 Physics::Physics(float gravityFactor, float scaling)
 	: gravity(0.0f, gravityFactor), world(gravity), scaling(scaling), enabled(true), debug(false)
 {
+	ENGINE_CONSTRUCTOR(this);
+
 	_physics = this;
+}
+
+Physics::~Physics()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void Physics::set_scaling(float value)

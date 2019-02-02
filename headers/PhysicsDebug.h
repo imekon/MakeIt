@@ -10,6 +10,7 @@ namespace MakeIt
 	{
 	public:
 		PhysicsDebug();
+		virtual ~PhysicsDebug();
 
 		void draw(sf::RenderWindow *window);
 

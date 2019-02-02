@@ -10,6 +10,7 @@ namespace MakeIt
 	{
 	public:
 		Vector2(float x, float y);
+		virtual ~Vector2();
 
 		float get_x() const { return _x; }
 		float get_y() const { return _y; }

@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include <sstream>
 
+#include "Logger.h"
 #include "Node.h"
 #include "Physics.h"
 
@@ -12,6 +13,8 @@ int Node::_name_counter = 0;
 
 Node::Node() : _visible(true), _z(0)
 {
+	ENGINE_CONSTRUCTOR(this);
+
 	_name_counter++;
 	
 	stringstream stream;
@@ -21,7 +24,7 @@ Node::Node() : _visible(true), _z(0)
 
 Node::~Node()
 {
-
+	ENGINE_DESTRUCTOR(this);
 }
 
 void Node::add_child(Node * child)

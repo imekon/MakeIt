@@ -8,6 +8,7 @@ namespace MakeIt
 	{
 	public:
 		DynamicBody();
+		virtual ~DynamicBody();
 
 		const char *get_type_name() const override { return "Dynamic"; }
 		float get_density() const { return _density; }

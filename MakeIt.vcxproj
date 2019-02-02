@@ -65,6 +65,7 @@
     <ClCompile Include="box2d\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="box2d\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="box2d\Rope\b2Rope.cpp" />
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="imgui\imgui-SFML.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />

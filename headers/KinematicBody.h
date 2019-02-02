@@ -8,6 +8,7 @@ namespace MakeIt
 	{
 	public:
 		KinematicBody();
+		virtual ~KinematicBody();
 
 		const char *get_type_name() const override { return "Kinematic"; }
 

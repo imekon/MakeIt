@@ -7,7 +7,12 @@ using namespace MakeIt;
 
 BoxShape::BoxShape(float width, float height) : _width(width), _height(height)
 {
+	ENGINE_CONSTRUCTOR(this);
+}
 
+BoxShape::~BoxShape()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void BoxShape::create_shape_and_fixture(b2Body * body, b2FixtureDef *fixture)

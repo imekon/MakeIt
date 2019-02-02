@@ -11,12 +11,15 @@ using namespace MakeIt;
 
 Texture::Texture() : _texture(nullptr)
 {
+	ENGINE_CONSTRUCTOR(this);
 }
 
 Texture::~Texture()
 {
 	if (_texture)
 		delete _texture;
+
+	ENGINE_DESTRUCTOR(this);
 }
 
 bool Texture::load(const char * filename)

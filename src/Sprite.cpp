@@ -11,10 +11,12 @@ using namespace MakeIt;
 
 Sprite::Sprite() : _origin(0.0f, 0.0f)
 {
+	ENGINE_CONSTRUCTOR(this);
 }
 
 Sprite::~Sprite()
 {
+	ENGINE_DESTRUCTOR(this);
 }
 
 void Sprite::set_global_position(Vector2 vector)

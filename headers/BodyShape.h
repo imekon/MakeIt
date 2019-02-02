@@ -12,6 +12,7 @@ namespace MakeIt
 	{
 	public:
 		BodyShape();
+		virtual ~BodyShape();
 
 		virtual void create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture);
 

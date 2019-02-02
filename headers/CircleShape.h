@@ -8,6 +8,7 @@ namespace MakeIt
 	{
 	public:
 		CircleShape(float radius);
+		virtual ~CircleShape();
 
 		void create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture) override;
 

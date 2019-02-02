@@ -12,6 +12,7 @@ namespace MakeIt
 	{
 	public:
 		Physics(float gravityFactor, float scaling);
+		virtual ~Physics();
 
 		const char *get_type_name() const override { return "Physics"; }
 

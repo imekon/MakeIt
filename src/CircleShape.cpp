@@ -7,6 +7,12 @@ using namespace MakeIt;
 
 CircleShape::CircleShape(float radius) : _radius(radius)
 {
+	ENGINE_CONSTRUCTOR(this);
+}
+
+CircleShape::~CircleShape()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void CircleShape::create_shape_and_fixture(b2Body * body, b2FixtureDef *fixture)

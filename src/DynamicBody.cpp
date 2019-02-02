@@ -8,7 +8,14 @@ using namespace MakeIt;
 
 DynamicBody::DynamicBody() : _density(1.0f), _friction(0.0f), _restitution(0.0f)
 {
+	ENGINE_CONSTRUCTOR(this);
+
 	_body_type = b2_dynamicBody;
+}
+
+DynamicBody::~DynamicBody()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void MakeIt::DynamicBody::set_density(float value)

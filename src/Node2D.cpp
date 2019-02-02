@@ -8,12 +8,12 @@ using namespace MakeIt;
 Node2D::Node2D() : apply_parent_position(true), apply_parent_scale(true), apply_parent_rotate(true),
 	_global_position(0.0f, 0.0f), _global_scale(1.0f, 1.0f),  _position(0.0f, 0.0f), _scale(1.0f, 1.0f), _rotate(0.0f)
 {
-
+	ENGINE_CONSTRUCTOR(this);
 }
 
 Node2D::~Node2D()
 {
-
+	ENGINE_DESTRUCTOR(this);
 }
 
 void Node2D::set_position(Vector2 vector)

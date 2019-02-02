@@ -18,7 +18,12 @@ using namespace MakeIt;
 
 PhysicsBody::PhysicsBody() : update_physics(false)
 {
+	ENGINE_CONSTRUCTOR(this);
+}
 
+PhysicsBody::~PhysicsBody()
+{
+	ENGINE_DESTRUCTOR(this);
 }
 
 void PhysicsBody::set_shape(BodyShape *shape)
