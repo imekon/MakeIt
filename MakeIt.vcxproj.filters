@@ -375,6 +375,9 @@
     <ClCompile Include="Engine.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Object.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -659,12 +662,18 @@
     <ClInclude Include="headers\Engine.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Object.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\game.lua">
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\physics.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\test1.lua">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

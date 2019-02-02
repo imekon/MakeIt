@@ -141,11 +141,22 @@ bool LuaScript::execute_function(const char * function_name, float arg1)
 	return execute(function_name, 1);
 }
 
+#ifdef _DEBUG
+void LuaScript::memory_monitor_report()
+{
+	auto instance = MemoryMonitor::get_instance();
+	instance->report();
+}
+#endif
+
 void LuaScript::register_class(lua_State *state)
 {
 	getGlobalNamespace(state)
 		.beginNamespace("System")
 		.addFunction("versions", versions)
+#ifdef _DEBUG
+		.addFunction("memory_monitor_report", memory_monitor_report)
+#endif
 		.endNamespace();
 }
 
@@ -167,33 +178,6 @@ void LuaScript::register_classes(lua_State *state)
 	KinematicBody::register_class(state);
 	DynamicBody::register_class(state);
 	Console::register_class(state);
-}
-
-void LuaScript::create_texture_store(lua_State * state, sf::Texture * texture)
-{
-	GenericDataStore *node_store = static_cast<GenericDataStore *>(lua_newuserdata(state, sizeof(GenericDataStore)));
-
-	node_store->magic = NODE_STORE_MAGIC;
-	node_store->type = DATA::TEXTURE;
-	node_store->data = texture;
-}
-
-void LuaScript::create_vector_store(lua_State * state, MakeIt::Vector2 * vector)
-{
-	GenericDataStore *node_store = static_cast<GenericDataStore *>(lua_newuserdata(state, sizeof(GenericDataStore)));
-
-	node_store->magic = NODE_STORE_MAGIC;
-	node_store->type = DATA::VECTOR;
-	node_store->data = vector;
-}
-
-void LuaScript::create_node_store(lua_State * state, MakeIt::Node * node)
-{
-	GenericDataStore *node_store = static_cast<GenericDataStore *>(lua_newuserdata(state, sizeof(GenericDataStore)));
-
-	node_store->magic = NODE_STORE_MAGIC;
-	node_store->type = DATA::NODE;
-	node_store->data = node;
 }
 
 void LuaScript::versions()

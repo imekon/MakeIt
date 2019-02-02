@@ -6,19 +6,18 @@
 #include <LuaBridge.h>
 #include <RefCountedPtr.h>
 
+#include "Object.h"
+
 namespace MakeIt
 {
 	class Physics;
 
-	class Node
+	class Node : public Object
 	{
 	public:
 		Node();
 		virtual ~Node();
 
-		virtual const char * get_name() const { return _name.c_str(); }
-		virtual const char * get_type_name() const { return "Node"; }
-		virtual void set_name(const char *text) { _name = text; }
 		virtual void add_child(Node *child);
 		virtual void remove_child(Node *child);
 		virtual std::vector<Node *> & get_children() { return _children; }
@@ -37,9 +36,6 @@ namespace MakeIt
 	protected:
 		bool _visible;
 		int _z;
-		std::string _name;
 		std::vector<Node *> _children;
-
-		static int _name_counter;
 	};
 }

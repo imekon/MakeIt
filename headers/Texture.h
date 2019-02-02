@@ -7,9 +7,11 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "Object.h"
+
 namespace MakeIt
 {
-	class Texture
+	class Texture : public Object
 	{
 	public:
 		Texture();

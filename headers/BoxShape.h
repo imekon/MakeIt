@@ -10,6 +10,8 @@ namespace MakeIt
 		BoxShape(float width, float height);
 		virtual ~BoxShape();
 
+		const char * get_type_name() const override { return "BoxShape"; }
+
 		void create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture) override;
 
 		static void register_class(lua_State *state);

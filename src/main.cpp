@@ -207,14 +207,17 @@ int main()
 
 	LuaScript::execute_function("game_shutdown");
 
+#ifdef _DEBUG
+	auto memory = MemoryMonitor::get_instance();
+	memory->report();
+#endif
+
 	ImGui::SFML::Shutdown();
 
 	Console::shutdown();
 	TextureManager::shutdown();
 
 	LuaScript::shutdown();
-
-	_CrtDumpMemoryLeaks();
 
 	return 0;
 }

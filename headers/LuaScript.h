@@ -37,9 +37,9 @@ public:
 	static bool execute_function(const char *function_name);
 	static bool execute_function(const char *function_name, float arg1);
 
-	static void create_texture_store(lua_State *state, sf::Texture *texture);
-	static void create_vector_store(lua_State *state, MakeIt::Vector2 *vector);
-	static void create_node_store(lua_State *state, MakeIt::Node *node);
+#ifdef _DEBUG
+	static void memory_monitor_report();
+#endif // _DEBUG
 
 private:
 	static bool running;

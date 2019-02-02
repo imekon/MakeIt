@@ -9,17 +9,10 @@ using namespace std;
 using namespace luabridge;
 using namespace MakeIt;
 
-int Node::_name_counter = 0;
-
 Node::Node() : _visible(true), _z(0)
 {
 	ENGINE_CONSTRUCTOR(this);
 
-	_name_counter++;
-	
-	stringstream stream;
-	stream << "node" << _name_counter;
-	_name = stream.str();
 }
 
 Node::~Node()

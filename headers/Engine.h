@@ -2,19 +2,22 @@
 
 #include <vector>
 
+#include "Object.h"
+
 #ifdef _DEBUG
 class MemoryMonitor
 {
 public:
 	MemoryMonitor();
 
-	void add_constructor(void *ptr);
-	void remove_constructor(void *ptr);
+	void add_constructor(MakeIt::Object *ptr);
+	void remove_constructor(MakeIt::Object *ptr);
+	void report();
 
 	static MemoryMonitor *get_instance() { return instance; }
 
 private:
-	std::vector<void *> pointers;
+	std::vector<MakeIt::Object *> pointers;
 	static MemoryMonitor *instance;
 };
 

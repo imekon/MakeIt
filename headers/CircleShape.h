@@ -10,6 +10,8 @@ namespace MakeIt
 		CircleShape(float radius);
 		virtual ~CircleShape();
 
+		const char * get_type_name() const override { return "CircleShape"; }
+
 		void create_shape_and_fixture(b2Body *body, b2FixtureDef *fixture) override;
 
 		static void register_class(lua_State *state);

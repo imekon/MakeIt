@@ -115,6 +115,7 @@
     <ClCompile Include="src\Node.cpp" />
     <ClCompile Include="src\Node2D.cpp" />
     <ClCompile Include="src\Node3D.cpp" />
+    <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Physics.cpp" />
     <ClCompile Include="src\PhysicsBody.cpp" />
     <ClCompile Include="src\PhysicsDebug.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="headers\Node.h" />
     <ClInclude Include="headers\Node2D.h" />
     <ClInclude Include="headers\Node3D.h" />
+    <ClInclude Include="headers\Object.h" />
     <ClInclude Include="headers\Physics.h" />
     <ClInclude Include="headers\PhysicsBody.h" />
     <ClInclude Include="headers\PhysicsDebug.h" />
@@ -225,6 +227,7 @@
   <ItemGroup>
     <None Include="scripts\game.lua" />
     <None Include="scripts\physics.lua" />
+    <None Include="scripts\test1.lua" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\ball.png" />
