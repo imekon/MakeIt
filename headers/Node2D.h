@@ -22,8 +22,8 @@ namespace MakeIt
 		const Vector2 & get_position() const { return _position; }
 		const Vector2 & get_scale() const { return _scale; }
 		float get_rotate() const { return _rotate; }
-		Vector2 get_global_position() const { return _global_position; }
-		Vector2 get_global_scale() const { return _global_scale; }
+		const Vector2 & get_global_position() const { return _global_position; }
+		const Vector2 & get_global_scale() const { return _global_scale; }
 
 		static void register_class(lua_State *state);
 
