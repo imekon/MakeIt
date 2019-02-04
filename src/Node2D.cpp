@@ -16,9 +16,9 @@ Node2D::~Node2D()
 	ENGINE_DESTRUCTOR(this);
 }
 
-void Node2D::set_position(const Vector2 & vector)
+void Node2D::set_position(const Vector2 *vector)
 {
-	_position = vector;
+	_position = *vector;
 
 	for (auto child : _children)
 	{
@@ -28,19 +28,19 @@ void Node2D::set_position(const Vector2 & vector)
 	}
 }
 
-void Node2D::set_global_position(const Vector2 & vector)
+void Node2D::set_global_position(const Vector2 *vector)
 {
-	_global_position = vector;
+	_global_position = *vector;
 }
 
-void MakeIt::Node2D::set_global_scale(const Vector2 & vector)
+void MakeIt::Node2D::set_global_scale(const Vector2 *vector)
 {
-	_global_scale = vector;
+	_global_scale = *vector;
 }
 
-void Node2D::set_scale(const Vector2 & vector)
+void Node2D::set_scale(const Vector2 *vector)
 {
-	_scale = vector;
+	_scale = *vector;
 
 	for (auto child : _children)
 	{

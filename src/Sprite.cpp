@@ -19,28 +19,28 @@ Sprite::~Sprite()
 	ENGINE_DESTRUCTOR(this);
 }
 
-void Sprite::set_global_position(const Vector2 & vector)
+void Sprite::set_global_position(const Vector2 *vector)
 {
 	Node2D::set_global_position(vector);
 
 	_sprite.setPosition(_global_position.get_x() + _position.get_x(), _global_position.get_y() + _position.get_y());
 }
 
-void MakeIt::Sprite::set_global_scale(const Vector2 & vector)
+void MakeIt::Sprite::set_global_scale(const Vector2 *vector)
 {
 	Node2D::set_global_scale(vector);
 
 	_sprite.setScale(_global_scale.get_x() * _scale.get_x(), _global_scale.get_y() * _scale.get_y());
 }
 
-void Sprite::set_position(const Vector2 & vector)
+void Sprite::set_position(const Vector2 *vector)
 {
 	Node2D::set_position(vector);
 
 	_sprite.setPosition(_global_position.get_x() + _position.get_x(), _global_position.get_y() + _position.get_y());
 }
 
-void Sprite::set_scale(const Vector2 & vector)
+void Sprite::set_scale(const Vector2 *vector)
 {
 	Node2D::set_scale(vector);
 	_sprite.setScale(_global_scale.get_x() * _scale.get_x(), _global_scale.get_y() * _scale.get_y());
@@ -55,9 +55,9 @@ void Sprite::set_rotate(float angle)
 	_sprite.setRotation(angle);
 }
 
-void Sprite::set_origin(const Vector2 & vector)
+void Sprite::set_origin(const Vector2 *vector)
 {
-	_origin = vector;
+	_origin = *vector;
 	_sprite.setOrigin(_origin.get_x(), _origin.get_y());
 }
 

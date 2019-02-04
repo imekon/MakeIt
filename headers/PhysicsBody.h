@@ -14,7 +14,7 @@ namespace MakeIt
 		virtual ~PhysicsBody();
 
 		virtual void set_shape(BodyShape *shape);
-		void set_position(const Vector2 & vector) override;
+		void set_position(const Vector2 *vector) override;
 		void set_rotate(float angle) override;
 		void update(Physics *physics) override;
 

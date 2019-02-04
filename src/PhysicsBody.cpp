@@ -44,12 +44,12 @@ void PhysicsBody::set_shape(BodyShape *shape)
 	shape->create_shape_and_fixture(body, get_fixture());
 }
 
-void PhysicsBody::set_position(const Vector2 & vector)
+void PhysicsBody::set_position(const Vector2 *vector)
 {
 	update_physics = true;
 	Node2D::set_position(vector);
 	auto logger = Logger::get_instance();
-	logger->log("PhysicsBody set position %1.2f %1.2f\n", vector.get_x(), vector.get_y());
+	logger->log("PhysicsBody set position %1.2f %1.2f\n", vector->get_x(), vector->get_y());
 }
 
 void PhysicsBody::set_rotate(float angle)
@@ -78,7 +78,7 @@ void PhysicsBody::update(Physics *physics)
 		auto x = pos.x * physics->get_scaling();
 		auto y = pos.y * physics->get_scaling();
 		Logger::get_instance()->log("%s: update position via physics %1.2f %1.2f\n", _name.c_str(), x, y);
-		Node2D::set_position(Vector2(x, y));
+		Node2D::set_position(new Vector2(x, y));
 		auto angle = body->GetAngle();
 		set_rotate(R2D(angle));
 	}
