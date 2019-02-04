@@ -44,7 +44,7 @@ void PhysicsBody::set_shape(BodyShape *shape)
 	shape->create_shape_and_fixture(body, get_fixture());
 }
 
-void PhysicsBody::set_position(Vector2 vector)
+void PhysicsBody::set_position(const Vector2 & vector)
 {
 	update_physics = true;
 	Node2D::set_position(vector);
