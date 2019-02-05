@@ -64,9 +64,9 @@ void Node::sort()
 		{
 			return node1->get_z() < node2->get_z();
 		}
-	} compare_sprites;
+	} compare_nodes;
 
-	std::sort(_children.begin(), _children.end(), compare_sprites);
+	std::sort(_children.begin(), _children.end(), compare_nodes);
 }
 
 void MakeIt::Node::register_class(lua_State * state)
