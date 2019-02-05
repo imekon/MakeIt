@@ -20,33 +20,39 @@ Node::~Node()
 	ENGINE_DESTRUCTOR(this);
 }
 
-void Node::add_child(Node * child)
+void Node::add_child(RefCountedPtr<Node> child)
 {
-	if (child)
-		_children.push_back(child);
+	_children.push_back(child);
 }
 
-void Node::remove_child(Node * child)
+void Node::remove_child(RefCountedPtr<Node> child)
 {
-	auto iter = find(_children.begin(), _children.end(), child);
-	if (iter != _children.end())
-		_children.erase(iter);
+	//auto iter = find(_children.begin(), _children.end(), child);
+	//if (iter != _children.end())
+	//	_children.erase(iter);
+
+	for (auto iter = _children.begin(); iter != _children.end(); ++iter)
+	{
+		if (iter->get() == child.get())
+		{
+			_children.erase(iter);
+			break;
+		}
+	}
 }
 
 void Node::draw(sf::RenderWindow * window)
 {
 	if (_visible)
 		for (auto child : _children)
-			if (child)
-				child->draw(window);
+			child->draw(window);
 }
 
 void Node::update(Physics *physics)
 {
 	for (auto child : _children)
 	{
-		if (child)
-			child->update(physics);
+		child->update(physics);
 	}
 }
 
@@ -54,7 +60,7 @@ void Node::sort()
 {
 	struct
 	{
-		bool operator()(Node *node1, Node *node2) const
+		bool operator()(RefCountedPtr<Node> node1, RefCountedPtr<Node> node2) const
 		{
 			return node1->get_z() < node2->get_z();
 		}

@@ -20,7 +20,7 @@
 using namespace std;
 using namespace MakeIt;
 
-static void traverse_scene_tree(Node *node)
+static void traverse_scene_tree(luabridge::RefCountedPtr<Node> node)
 {
 	for (auto child : node->get_children())
 	{

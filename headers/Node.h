@@ -18,9 +18,9 @@ namespace MakeIt
 		Node();
 		virtual ~Node();
 
-		virtual void add_child(Node *child);
-		virtual void remove_child(Node *child);
-		virtual std::vector<Node *> & get_children() { return _children; }
+		virtual void add_child(luabridge::RefCountedPtr<Node> child);
+		virtual void remove_child(luabridge::RefCountedPtr<Node> child);
+		virtual std::vector<luabridge::RefCountedPtr<Node>> & get_children() { return _children; }
 		virtual void draw(sf::RenderWindow *window);
 		virtual bool get_visible() const { return _visible; }
 		virtual void set_visible(bool visible) { _visible = visible; }
@@ -36,6 +36,6 @@ namespace MakeIt
 	protected:
 		bool _visible;
 		int _z;
-		std::vector<Node *> _children;
+		std::vector<luabridge::RefCountedPtr<Node>> _children;
 	};
 }

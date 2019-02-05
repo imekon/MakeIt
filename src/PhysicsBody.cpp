@@ -49,7 +49,7 @@ void PhysicsBody::set_position(const Vector2 *vector)
 	update_physics = true;
 	Node2D::set_position(vector);
 	auto logger = Logger::get_instance();
-	logger->log("PhysicsBody set position %1.2f %1.2f\n", vector->get_x(), vector->get_y());
+	//logger->log("PhysicsBody set position %1.2f %1.2f\n", vector->get_x(), vector->get_y());
 }
 
 void PhysicsBody::set_rotate(float angle)
@@ -64,8 +64,7 @@ void PhysicsBody::update(Physics *physics)
 
 	if (update_physics)
 	{
-		Logger::get_instance()->log("%s: update physics via position %1.2f %1.2f\n", _name.c_str(), _position.get_x(), _position.get_y());
-
+		//Logger::get_instance()->log("%s: update physics via position %1.2f %1.2f\n", _name.c_str(), _position.get_x(), _position.get_y());
 		auto physics = Physics::get_physics();
 		if (physics && body)
 			body->SetTransform(b2Vec2(_position.get_x() / physics->get_scaling(), _position.get_y() / physics->get_scaling()), D2R(_rotate));
@@ -77,7 +76,7 @@ void PhysicsBody::update(Physics *physics)
 		auto pos = body->GetPosition();
 		auto x = pos.x * physics->get_scaling();
 		auto y = pos.y * physics->get_scaling();
-		Logger::get_instance()->log("%s: update position via physics %1.2f %1.2f\n", _name.c_str(), x, y);
+		//Logger::get_instance()->log("%s: update position via physics %1.2f %1.2f\n", _name.c_str(), x, y);
 		Node2D::set_position(new Vector2(x, y));
 		auto angle = body->GetAngle();
 		set_rotate(R2D(angle));

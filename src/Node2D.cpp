@@ -22,7 +22,7 @@ void Node2D::set_position(const Vector2 *vector)
 
 	for (auto child : _children)
 	{
-		auto node2d = dynamic_cast<Node2D *>(child);
+		auto node2d = dynamic_cast<Node2D *>(child.get());
 		if (node2d && node2d->apply_parent_position)
 			node2d->set_global_position(vector);
 	}
@@ -44,7 +44,7 @@ void Node2D::set_scale(const Vector2 *vector)
 
 	for (auto child : _children)
 	{
-		auto node2d = dynamic_cast<Node2D *>(child);
+		auto node2d = dynamic_cast<Node2D *>(child.get());
 		if (node2d && node2d->apply_parent_scale)
 			node2d->set_global_scale(vector);
 	}
@@ -56,7 +56,7 @@ void Node2D::set_rotate(float angle)
 
 	for (auto child : _children)
 	{
-		auto node2d = dynamic_cast<Node2D *>(child);
+		auto node2d = dynamic_cast<Node2D *>(child.get());
 		if (node2d)
 			node2d->set_rotate(angle);
 	}
