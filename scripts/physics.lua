@@ -101,18 +101,20 @@ function create_crates()
 end
 
 function create_end_stops()
+	create_static_crate(100, 560 - 3 * 64)
 	create_static_crate(100, 560 - 128)
 	create_static_crate(100, 560 - 64)
 	create_static_crate(100, 560)
 	create_static_crate(550, 560)
-	create_static_crate(1000, 560)
-	create_static_crate(1000, 560 - 64)
-	create_static_crate(1000, 560 - 128)
+	create_static_crate(820, 560)
+	create_static_crate(1200, 560)
+	create_static_crate(1200, 560 - 64)
+	create_static_crate(1200, 560 - 128)
 end
 
-function create_balls()
-	for i = 1, 10 do
-		local b = create_ball(160 + i * 50, 200)
+function create_balls(offset)
+	for i = 1, 15 do
+		local b = create_ball(160 + i * 50 + offset, 200)
 		if i == 5 then
 			b.rotate = 30
 		end

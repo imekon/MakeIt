@@ -141,7 +141,7 @@ bool LuaScript::execute_function(const char * function_name, float arg1)
 	return execute(function_name, 1);
 }
 
-#ifdef _DEBUG
+#ifdef ENABLE_MEMORY_MONITOR
 void LuaScript::memory_monitor_report()
 {
 	auto instance = MemoryMonitor::get_instance();
@@ -154,7 +154,7 @@ void LuaScript::register_class(lua_State *state)
 	getGlobalNamespace(state)
 		.beginNamespace("System")
 		.addFunction("versions", versions)
-#ifdef _DEBUG
+#ifdef ENABLE_MEMORY_MONITOR
 		.addFunction("memory_monitor_report", memory_monitor_report)
 #endif
 		.endNamespace();

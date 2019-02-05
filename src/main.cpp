@@ -40,13 +40,13 @@ static void traverse_scene_tree(luabridge::RefCountedPtr<Node> node)
 
 int main()
 {
-#ifdef _DEBUG
+#ifdef ENABLE_MEMORY_MONITOR
 	auto monitor = new MemoryMonitor();
 #endif
 
 	auto console = Console::getInstance();
 	auto logger = Logger::get_instance();
-	logger->set_enable(true);
+	//logger->set_enable(true);
 
 	auto texture_manager = TextureManager::get_instance();
 
@@ -113,7 +113,7 @@ int main()
 
 		auto delta = deltaClock.restart();
 		now += delta.asSeconds();
-		if (now > 0.1f)
+		if (now > 0.3f)
 		{
 			fps = 1.0f / delta.asSeconds();
 			now = 0.0f;
@@ -207,7 +207,7 @@ int main()
 
 	LuaScript::execute_function("game_shutdown");
 
-#ifdef _DEBUG
+#ifdef ENABLE_MEMORY_MONITOR
 	auto memory = MemoryMonitor::get_instance();
 	memory->report();
 #endif

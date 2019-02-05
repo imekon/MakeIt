@@ -5,7 +5,7 @@
 using namespace std;
 using namespace MakeIt;
 
-#ifdef _DEBUG
+#ifdef ENABLE_MEMORY_MONITOR
 MemoryMonitor *MemoryMonitor::instance = nullptr;
 
 MemoryMonitor::MemoryMonitor()

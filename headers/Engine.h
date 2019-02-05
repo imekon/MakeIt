@@ -4,7 +4,7 @@
 
 #include "Object.h"
 
-#ifdef _DEBUG
+#ifdef ENABLE_MEMORY_MONITOR
 class MemoryMonitor
 {
 public:
@@ -25,4 +25,5 @@ private:
 #define ENGINE_DESTRUCTOR(x) MemoryMonitor::get_instance()->remove_constructor(x);
 #else
 #define ENGINE_CONSTRUCTOR(x)
+#define ENGINE_DESTRUCTOR(x)
 #endif
