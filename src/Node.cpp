@@ -27,18 +27,18 @@ void Node::add_child(RefCountedPtr<Node> child)
 
 void Node::remove_child(RefCountedPtr<Node> child)
 {
-	//auto iter = find(_children.begin(), _children.end(), child);
-	//if (iter != _children.end())
-	//	_children.erase(iter);
+	auto iter = find(_children.begin(), _children.end(), child);
+	if (iter != _children.end())
+		_children.erase(iter);
 
-	for (auto iter = _children.begin(); iter != _children.end(); ++iter)
-	{
-		if (iter->get() == child.get())
-		{
-			_children.erase(iter);
-			break;
-		}
-	}
+	//for (auto iter = _children.begin(); iter != _children.end(); ++iter)
+	//{
+	//	if (iter->get() == child.get())
+	//	{
+	//		_children.erase(iter);
+	//		break;
+	//	}
+	//}
 }
 
 void Node::draw(sf::RenderWindow * window)

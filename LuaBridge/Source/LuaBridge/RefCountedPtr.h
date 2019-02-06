@@ -225,6 +225,13 @@ struct ContainerTraits <RefCountedPtr <T> >
   {
     return c.get ();
   }
+
 };
+
+template<class T>
+bool operator ==(T &lhs, T rhs)
+{
+	return static_cast<bool>(lhs.get() == rhs.get());
+}
 
 } // namespace luabridge
