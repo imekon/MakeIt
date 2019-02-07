@@ -1,0 +1,5 @@
+f = Font()
+f:load("fonts/modes___.ttf")
+t = Text()
+t:set_font(f)
+t:set_string("This is some text")

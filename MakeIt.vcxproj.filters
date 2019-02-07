@@ -372,10 +372,16 @@
     <ClCompile Include="src\Logger.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
+    <ClCompile Include="src\Object.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object.cpp">
+    <ClCompile Include="src\Engine.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Font.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Text.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -665,6 +671,12 @@
     <ClInclude Include="headers\Object.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Font.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Text.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\game.lua">
@@ -674,6 +686,9 @@
       <Filter>scripts</Filter>
     </None>
     <None Include="scripts\test1.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="scripts\test2.lua">
       <Filter>scripts</Filter>
     </None>
   </ItemGroup>

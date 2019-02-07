@@ -20,6 +20,8 @@ namespace MakeIt
 		void set_x(float x) { _x = x; }
 		void set_y(float y) { _y = y; }
 
+		static float dot(const Vector2 *first, const Vector2 *second);
+
 		static void register_class(lua_State *state);
 
 	private:

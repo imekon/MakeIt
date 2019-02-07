@@ -65,7 +65,6 @@
     <ClCompile Include="box2d\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="box2d\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="box2d\Rope\b2Rope.cpp" />
-    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="imgui\imgui-SFML.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -108,6 +107,8 @@
     <ClCompile Include="src\CircleShape.cpp" />
     <ClCompile Include="src\Console.cpp" />
     <ClCompile Include="src\DynamicBody.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\Font.cpp" />
     <ClCompile Include="src\KinematicBody.cpp" />
     <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\LuaScript.cpp" />
@@ -123,6 +124,7 @@
     <ClCompile Include="src\BodyShape.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\StaticBody.cpp" />
+    <ClCompile Include="src\Text.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\Vector2.cpp" />
@@ -181,6 +183,7 @@
     <ClInclude Include="headers\Console.h" />
     <ClInclude Include="headers\DynamicBody.h" />
     <ClInclude Include="headers\Engine.h" />
+    <ClInclude Include="headers\Font.h" />
     <ClInclude Include="headers\KinematicBody.h" />
     <ClInclude Include="headers\Logger.h" />
     <ClInclude Include="headers\LuaScript.h" />
@@ -195,6 +198,7 @@
     <ClInclude Include="headers\Scene.h" />
     <ClInclude Include="headers\Sprite.h" />
     <ClInclude Include="headers\StaticBody.h" />
+    <ClInclude Include="headers\Text.h" />
     <ClInclude Include="headers\Texture.h" />
     <ClInclude Include="headers\TextureManager.h" />
     <ClInclude Include="headers\Vector2.h" />
@@ -228,6 +232,7 @@
     <None Include="scripts\game.lua" />
     <None Include="scripts\physics.lua" />
     <None Include="scripts\test1.lua" />
+    <None Include="scripts\test2.lua" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\ball.png" />
