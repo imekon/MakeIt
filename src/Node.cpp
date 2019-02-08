@@ -12,7 +12,6 @@ using namespace MakeIt;
 Node::Node() : _visible(true), _z(0)
 {
 	ENGINE_CONSTRUCTOR(this);
-
 }
 
 Node::~Node()

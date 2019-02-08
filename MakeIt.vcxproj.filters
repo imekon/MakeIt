@@ -384,6 +384,9 @@
     <ClCompile Include="src\Text.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Colour.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h">
@@ -675,6 +678,9 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="headers\Text.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Colour.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

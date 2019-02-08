@@ -16,6 +16,8 @@ namespace MakeIt
 		Font();
 		virtual ~Font();
 
+		const char *get_type_name() const override { return "Font"; }
+
 		sf::Font *get_font() const { return _font; }
 		bool load(const char *filename);
 

@@ -5,6 +5,7 @@
 #include "Console.h"
 #include "TextureManager.h"
 #include "Font.h"
+#include "Colour.h"
 #include "Text.h"
 #include "Vector2.h"
 #include "Sprite.h"
@@ -169,6 +170,7 @@ void LuaScript::register_classes(lua_State *state)
 	Node2D::register_class(state);
 	Vector2::register_class(state);
 	Texture::register_class(state);
+	Colour::register_class(state);
 	Font::register_class(state);
 	Text::register_class(state);
 	Sprite::register_class(state);

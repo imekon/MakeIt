@@ -76,7 +76,6 @@ int main()
 
 	console->print("MakeIt Game Engine\n\nCopyright (C) 2019 Pete Goodwin\n\n");
 
-	auto root = Scene::get_root();
 	auto physics = Physics::get_physics();
 	
 	PhysicsDebug *physics_debug = nullptr;
@@ -93,6 +92,8 @@ int main()
 	sf::Clock deltaClock;
 	while (window.isOpen()) 
 	{
+		auto root = Scene::get_root();
+
 		sf::Event event;
 		while (window.pollEvent(event)) 
 		{

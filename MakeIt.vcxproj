@@ -105,6 +105,7 @@
     <ClCompile Include="LUA\lzio.c" />
     <ClCompile Include="src\BoxShape.cpp" />
     <ClCompile Include="src\CircleShape.cpp" />
+    <ClCompile Include="src\Colour.cpp" />
     <ClCompile Include="src\Console.cpp" />
     <ClCompile Include="src\DynamicBody.cpp" />
     <ClCompile Include="src\Engine.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="headers\BodyShape.h" />
     <ClInclude Include="headers\BoxShape.h" />
     <ClInclude Include="headers\CircleShape.h" />
+    <ClInclude Include="headers\Colour.h" />
     <ClInclude Include="headers\Console.h" />
     <ClInclude Include="headers\DynamicBody.h" />
     <ClInclude Include="headers\Engine.h" />
