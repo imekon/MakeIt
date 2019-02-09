@@ -7,6 +7,41 @@ Colour::Colour()
 {
 }
 
+void MakeIt::Colour::set_rgba(int red, int green, int blue, int alpha)
+{
+	_colour.r = red;
+	_colour.g = green;
+	_colour.b = blue;
+	_colour.a = alpha;
+}
+
+void MakeIt::Colour::set_rgb(int red, int green, int blue)
+{
+	_colour.r = red;
+	_colour.g = green;
+	_colour.b = blue;
+}
+
+void MakeIt::Colour::set_red(int red)
+{
+	_colour.r = red;
+}
+
+void MakeIt::Colour::set_green(int green)
+{
+	_colour.g = green;
+}
+
+void MakeIt::Colour::set_blue(int blue)
+{
+	_colour.b = blue;
+}
+
+void MakeIt::Colour::set_alpha(int alpha)
+{
+	_colour.a = alpha;
+}
+
 Colour *Colour::from_rgba(int red, int green, int blue, int alpha)
 {
 	auto colour = new Colour();
@@ -68,6 +103,12 @@ void Colour::register_class(lua_State *state)
 		.addFunction("green", &Colour::green)
 		.addFunction("blue", &Colour::blue)
 		.addFunction("alpha", &Colour::alpha)
+		.addFunction("set_rgba", &Colour::set_rgba)
+		.addFunction("set_rgb", &Colour::set_rgb)
+		.addFunction("set_red", &Colour::set_red)
+		.addFunction("set_green", &Colour::set_green)
+		.addFunction("set_blue", &Colour::set_blue)
+		.addFunction("set_alpha", &Colour::set_alpha)
 		.addStaticFunction("from_rgba", from_rgba)
 		.addStaticFunction("from_rgb", from_rgb)
 		.addStaticFunction("from_name", from_name)

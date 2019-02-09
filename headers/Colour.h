@@ -22,6 +22,13 @@ namespace MakeIt
 		int blue() const { return _colour.b; }
 		int alpha() const { return _colour.a; }
 
+		void set_rgba(int red, int green, int blue, int alpha);
+		void set_rgb(int red, int green, int blue);
+		void set_red(int red);
+		void set_green(int green);
+		void set_blue(int blue);
+		void set_alpha(int alpha);
+
 		sf::Color get_colour() const { return _colour; }
 
 		static Colour *from_rgba(int red, int green, int blue, int alpha);
