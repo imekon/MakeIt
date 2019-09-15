@@ -37,7 +37,7 @@ void Logger::log(const char * format, ...)
 	va_list args;
 	va_start(args, format);
 	char buffer[1024];
-	vsprintf(buffer, format, args);
+	vsprintf_s(buffer, format, args);
 	va_end(args);
 
 	file << buffer;
