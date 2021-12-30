@@ -74,7 +74,7 @@ int main()
 	auto showConsole = true;
 	auto showDemoWindow = false;
 
-	console->print("MakeIt Game Engine\n\nCopyright (C) 2019, 2020 Pete Goodwin\n\n");
+	console->print("MakeIt Game Engine\n\nCopyright (C) 2019 - 2021 Pete Goodwin\n\n");
 
 	auto physics = Physics::get_physics();
 	
